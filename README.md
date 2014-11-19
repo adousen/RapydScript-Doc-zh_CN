@@ -1,4 +1,4 @@
-关于RapydScript-Doc-cn项目
+关于RapydScript-Doc-Zh_cn项目
 ============================
 
 这是一个对RapydScript有关文档进行收集整理，并将其中的大部分翻译成中文的项目。
