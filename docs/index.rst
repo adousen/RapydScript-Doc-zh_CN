@@ -3,6 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+
 RapydScript文档
 ================================
 
@@ -13,6 +14,13 @@ RapydScript文档
 
    intro
    install
+   start
+   grammar
+   class
+   module
+   scope
+   except
+   advance
 
 
 索引

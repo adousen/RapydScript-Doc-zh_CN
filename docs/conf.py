@@ -96,6 +96,9 @@ pygments_style = 'sphinx'
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
+primary_domain = 'py'
+highlight_language = 'python'
+
 # If true, keep warnings as "system message" paragraphs in the built documents.
 #keep_warnings = False
 

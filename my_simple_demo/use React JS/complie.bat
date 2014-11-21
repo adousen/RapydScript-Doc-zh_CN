@@ -1,2 +1,2 @@
-@call rapydscript helloworld.pyj -o helloworld.js
+@call rapydscript helloworld.pyj -o helloworld.js -p
 pause

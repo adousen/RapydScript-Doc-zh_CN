@@ -5,7 +5,7 @@ RapydScript的介绍
 RapydScript是什么
 ------------------
 
-RapydScript（读音"RapidScript"）本身是一个预编译器，它支持使用与Python相近的语法编写的代码，并可以将其编译为JavaScript。类似的项目还有CoffeeScript。但在语法上，RapydScript更加简洁，更加易读。并且还允许将部分代码用Javascript的语法书写。
+RapydScript（读音"RapidScript"）本身是一个预编译器，它支持使用与Python相近的语法编写代码，并可以将其编译为JavaScript。类似的项目还有CoffeeScript。但在语法上，RapydScript更加简洁，更加易读。并且还允许在代码段中使用Javascript语法（嵌入式）。
 
 起初RapydScript项目的创建，目的是给那些希望能用类似Python的语法编写JavaScript的人一个替代Pyjamas方案，它不会像Pyjamas那样引入一些额外开销和复杂性。
 
@@ -15,23 +15,44 @@ RapydScrip使你可以使用Python来编写前端代码，并且不会像其他�
 
 如果你没有使用过上面提到的两个编译器，那么也不用着急。要是你曾使用过纯Javascript艰难地编写过代码，那么你一定会喜爱上Rapydscript。Rapydscript将Python和JavaScript两者的特性做了最好地结合，并带给你大多数其他Pythonic的JavaScript替代方案所没有的特性。
 
-RapydScript的特性
+它的特性
 ------------------
 
 下面是一些Rapydscript的特性：
 
-- 类（Class）：使用和感觉上都与Python相似。
-- 模块（module）：用于逻辑上抽象，并具有与Python模块相比的更多灵活性。
-- 可选的函数参数：使用与Python相似。
-- 继承机制：比Python还要强大，并且比JavaScript更简洁。
-- 支持定义匿名函数对象：与JavaScript的匿名函数相同。
-- 在代码中直接调外部的JavaScript/DOM 对象/函数/方法。不需要使用特殊的语法，并且不用管他们是不是在同一个框架中。
-- 变量和对象具有有意义的作用域，再也不需要重复那些 ”var“ 或者 ”new“关键字了。
-- 两种方式定义方法或函数。可以使用Python的定义方式，也可以使用JavaScript的定义方式。
-- Python或JavaScript的教程（tutorial）都可以使用，包括那些小部件。
-- self-hosting：编译器本身就是采用RapydScript编写，再编译成JavaScript代码的方式写成的。
+ - 类（Class）：使用和感觉上都与Python相似。
+ - 模块（module）：用于逻辑上抽象，并具有与Python模块相比的更多灵活性。
+ - 可选的函数参数：使用与Python相似。
+ - 继承机制：比Python还要强大，并且比JavaScript更简洁。
+ - 支持定义匿名函数对象：与JavaScript的匿名函数相同。
+ - 在代码中直接调外部的JavaScript/DOM 对象/函数/方法。不需要使用特殊的语法，并且不用管他们是不是在同一个框架中。
+ - 变量和对象具有有意义的作用域，再也不需要重复那些 ”var“ 或者 ”new“关键字了。
+ - 两种方式定义方法或函数。可以使用Python的定义方式，也可以使用JavaScript的定义方式。
+ - Python或JavaScript的教程（tutorial）都可以使用，包括那些小部件。
+ - self-hosting：编译器本身就是用RapydScript编写，然后编译成JavaScript代码，最终运行在NodeJS上面的。
  
 好了，不管怎样，我们不必再浪费时间来做过多的介绍了，学习一门新的语言或框架最好的方式就深入它。
 
 
+社区
+------------------
+- 如果你遇到了问题，有需要报告的bug，或者有特性需求，可以在邮件列表中自由发表在：http://groups.google.com/group/rapydscript
 
+
+- RapyScript项目中有一些的demo程序，但是我们的社区成员们还编写了许多其它更加不错的例子。比如你要想看下Rapydscript到底能够做些什么事情，下面有一些示例程序：
+
+    * | http://salvatore.pythonanywhere.com/RapydScript
+      | 这里有一些RapydScript项目 examples 目录下的demo程序，同时还有一些其它的示例。
+    * | http://salvatore.pythonanywhere.com/RapydBox
+      | 此处收集了一些非常酷的演示程序，展示了RapydScript与真正的Python是如何的相似，以及RapydScript与其它JavaScript共同工作的能力。RapydScript工作于NodeBox（也是由Python编写）的JavaScript移植版本之上。NodeBox当初从Python移植到JavaScript是为了支持跨平台的兼容性。但没有想到的是，现在使用RapydScript，却可以让原来Python版NodeBox的演示程序在JavaScript版的NodeBox中正常运行，并且一般很少需要修改代码（有时候完全不需要）。 
+    * | http://salvatore.diodev.fr/RapydGlow 
+      | RapydGlow_ 支持使用RapydScript编写对 GlowScript_ 进行调用的程序。GlowScript是我们一个社区成员所创建的项目（需要运行在支持WebGL的浏览器上，比如最新的Chrome和Firefox）。
+
+
+链接
+------------------
+- RapydScript on Github：https://github.com/atsepkov/RapydScript
+- RapydScript.com：http://rapydscript.com/
+
+.. _RapydGlow: https://github.com/artyprog/RapydGlow
+.. _GlowScript: http://www.glowscript.org/

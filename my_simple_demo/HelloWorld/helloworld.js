@@ -1,1 +1,1 @@
-function greet(){alert("Hello World!")}
+(function(){function greet(){alert("Hello World!")}})();

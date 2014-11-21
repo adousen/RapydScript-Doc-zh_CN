@@ -29,6 +29,7 @@
 
   
     <link rel="top" title="RapydScript 1.0 文档" href="index.html"/>
+        <link rel="next" title="安装与使用" href="install.html"/>
         <link rel="prev" title="RapydScript文档" href="index.html"/> 
 
   
@@ -59,7 +60,51 @@
             <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">RapydScript的介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">RapydScript是什么</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">RapydScript的特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">它的特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">社区</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">链接</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">安装与使用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id2">安装编译器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id3">编译代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">开始编程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="start.html#id3">简单的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#id4">在页面中调用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#api">使用外部的API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="grammar.html">基本语法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#id3">元组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#id5">序列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#id8">循环</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#id9">函数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class.html">类</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript 中的类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id3">外部类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id4">方法绑定</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">模块</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id3">编写模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id4">模块导入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id5">可以使用的标准库</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">作用域控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#todo">todo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="except.html">异常处理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="except.html#todo">todo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advance.html">高级话题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">简单的例子</a></li>
 </ul>
 </li>
 </ul>
@@ -100,16 +145,17 @@
 <h1>RapydScript的介绍<a class="headerlink" href="#rapydscript" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id1">
 <h2>RapydScript是什么<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<p>RapydScript（读音&#8221;RapidScript&#8221;）本身是一个预编译器，它支持使用与Python相近的语法编写的代码，并可以将其编译为JavaScript。类似的项目还有CoffeeScript。但在语法上，RapydScript更加简洁，更加易读。但是同样允许使用Javascript的语法。</p>
+<p>RapydScript（读音&#8221;RapidScript&#8221;）本身是一个预编译器，它支持使用与Python相近的语法编写代码，并可以将其编译为JavaScript。类似的项目还有CoffeeScript。但在语法上，RapydScript更加简洁，更加易读。并且还允许在代码段中使用Javascript语法（嵌入式）。</p>
 <p>起初RapydScript项目的创建，目的是给那些希望能用类似Python的语法编写JavaScript的人一个替代Pyjamas方案，它不会像Pyjamas那样引入一些额外开销和复杂性。</p>
 <p>RapydScrip使你可以使用Python来编写前端代码，并且不会像其他类似框架那样引入额外的开销，它的性能与纯Javascript编写的代码是一样的。对那些熟悉CoffeeScript的人来说，RapydScript与CoffeeScript是很相似的。但是，RapydScript受到的不是Ruby灵巧性，而是Python可读性的启发。</p>
 <p>对于熟悉Pyjamas的人来说，RapydScrip引入了许多相同的Python特性和语法支持，但不会带来同样的额外开销。</p>
 <p>如果你没有使用过上面提到的两个编译器，那么也不用着急。要是你曾使用过纯Javascript艰难地编写过代码，那么你一定会喜爱上Rapydscript。Rapydscript将Python和JavaScript两者的特性做了最好地结合，并带给你大多数其他Pythonic的JavaScript替代方案所没有的特性。</p>
 </div>
 <div class="section" id="id2">
-<h2>RapydScript的特性<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2>它的特性<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>下面是一些Rapydscript的特性：</p>
-<ul class="simple">
+<blockquote>
+<div><ul class="simple">
 <li>类（Class）：使用和感觉上都与Python相似。</li>
 <li>模块（module）：用于逻辑上抽象，并具有与Python模块相比的更多灵活性。</li>
 <li>可选的函数参数：使用与Python相似。</li>
@@ -119,9 +165,45 @@
 <li>变量和对象具有有意义的作用域，再也不需要重复那些 ”var“ 或者 ”new“关键字了。</li>
 <li>两种方式定义方法或函数。可以使用Python的定义方式，也可以使用JavaScript的定义方式。</li>
 <li>Python或JavaScript的教程（tutorial）都可以使用，包括那些小部件。</li>
-<li>self-hosting：编译器本身就是采用RapydScript编写，再编译成JavaScript代码的方式写成的。</li>
+<li>self-hosting：编译器本身就是用RapydScript编写，然后编译成JavaScript代码，最终运行在NodeJS上面的。</li>
 </ul>
+</div></blockquote>
 <p>好了，不管怎样，我们不必再浪费时间来做过多的介绍了，学习一门新的语言或框架最好的方式就深入它。</p>
+</div>
+<div class="section" id="id3">
+<h2>社区<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ul>
+<li><p class="first">如果你遇到了问题，有需要报告的bug，或者有特性需求，可以在邮件列表中自由发表在：<a class="reference external" href="http://groups.google.com/group/rapydscript">http://groups.google.com/group/rapydscript</a></p>
+</li>
+<li><p class="first">RapyScript项目中有一些的demo程序，但是我们的社区成员们还编写了许多其它更加不错的例子。比如你要想看下Rapydscript到底能够做些什么事情，下面有一些示例程序：</p>
+<blockquote>
+<div><ul>
+<li><div class="first line-block">
+<div class="line"><a class="reference external" href="http://salvatore.pythonanywhere.com/RapydScript">http://salvatore.pythonanywhere.com/RapydScript</a></div>
+<div class="line">这里有一些RapydScript项目 examples 目录下的demo程序，同时还有一些其它的示例。</div>
+</div>
+</li>
+<li><div class="first line-block">
+<div class="line"><a class="reference external" href="http://salvatore.pythonanywhere.com/RapydBox">http://salvatore.pythonanywhere.com/RapydBox</a></div>
+<div class="line">此处收集了一些非常酷的演示程序，展示了RapydScript与真正的Python是如何的相似，以及RapydScript与其它JavaScript共同工作的能力。RapydScript工作于NodeBox（也是由Python编写）的JavaScript移植版本之上。NodeBox当初从Python移植到JavaScript是为了支持跨平台的兼容性。但没有想到的是，现在使用RapydScript，却可以让原来Python版NodeBox的演示程序在JavaScript版的NodeBox中正常运行，并且一般很少需要修改代码（有时候完全不需要）。</div>
+</div>
+</li>
+<li><div class="first line-block">
+<div class="line"><a class="reference external" href="http://salvatore.diodev.fr/RapydGlow">http://salvatore.diodev.fr/RapydGlow</a></div>
+<div class="line"><a class="reference external" href="https://github.com/artyprog/RapydGlow">RapydGlow</a> 支持使用RapydScript编写对 <a class="reference external" href="http://www.glowscript.org/">GlowScript</a> 进行调用的程序。GlowScript是我们一个社区成员所创建的项目（需要运行在支持WebGL的浏览器上，比如最新的Chrome和Firefox）。</div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>链接<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>RapydScript on Github：<a class="reference external" href="https://github.com/atsepkov/RapydScript">https://github.com/atsepkov/RapydScript</a></li>
+<li>RapydScript.com：<a class="reference external" href="http://rapydscript.com/">http://rapydscript.com/</a></li>
+</ul>
 </div>
 </div>
 
@@ -130,6 +212,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="安装与使用"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="RapydScript文档"><span class="fa fa-arrow-circle-left"></span> Previous</a>

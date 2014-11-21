@@ -1,5 +1,7 @@
 @import url("_theme.css");
-
+h1{
+    text-align: center;
+}
 .wy-nav-content,
 .wy-nav-content-wrap {
     color: #222;
