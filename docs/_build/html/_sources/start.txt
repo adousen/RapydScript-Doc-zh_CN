@@ -71,7 +71,9 @@
 向外部API传递对象参数
 ````````````````````````````````
 
-在许多的外部API中，都使用对象来描述输入。与在JavaScript一样，你可以很简单地使用RapydScript创建，方式与你在JavaScript中相同，只不过是以一个Python字典： ::
+在许多的外部API中，都使用对象来描述输入。与在JavaScript一样，你可以很简单地使用RapydScript创建，方式与你在JavaScript中相同，只不过是以一个Python字典： 
+
+.. code-block:: javascript
 
     styles = {
         'background-color': '#ffe',
@@ -79,7 +81,9 @@
         'width':            50,
     }
 
-你可以像下面这样，将其传递给 jQuery： ::
+你可以像下面这样，将其传递给 jQuery： 
+
+.. code-block:: javascript
 
     $('#element').css(styles)
 
@@ -101,7 +105,9 @@ RapydScript的另外一个特性是，你可以直接将一个函数写成一个
 
 注意在函数定义完之后新的一行中的 逗号，编译需要通过它知道对象在此之后还有写有更多属性。它不能写在函数定义最后一条语句的同一行中，否则编译器会把它解析为函数的一部分。
 
-与在Python中相似，RapydScript支持在代码中使用 分号 表示开始新的一行。因此，你也可以像下面这样，将逗号放在函数定义的最后一条语句所在的同一行中： ::
+与在Python中相似，RapydScript支持在代码中使用 分号 表示开始新的一行。因此，你也可以像下面这样，将逗号放在函数定义的最后一条语句所在的同一行中： 
+
+.. code-block:: javascript
 
     hash = {
         'foo':  def():

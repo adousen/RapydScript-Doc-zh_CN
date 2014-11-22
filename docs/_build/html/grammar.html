@@ -77,10 +77,11 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">基本语法</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id3">元组</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">序列</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">循环</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tuple">元组 (tuple)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list">列表 (List)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">循环</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">其它惯用法</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="class.html">类</a><ul>
@@ -90,9 +91,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">模块</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id3">编写模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块编写</a></li>
 <li class="toctree-l2"><a class="reference internal" href="module.html#id4">模块导入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id5">可以使用的标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id5">可用的标准库</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="scope.html">作用域控制</a><ul>
@@ -147,72 +148,272 @@
 <p class="topic-title first">目录</p>
 <ul class="simple">
 <li><a class="reference internal" href="#id1" id="id14">基本语法</a><ul>
-<li><a class="reference internal" href="#id3" id="id15">元组</a><ul>
-<li><a class="reference internal" href="#id4" id="id16">打包与解包时的推导</a></li>
+<li><a class="reference internal" href="#tuple" id="id15">元组 (tuple)</a><ul>
+<li><a class="reference internal" href="#id3" id="id16">元组解包与推断</a></li>
+<li><a class="reference internal" href="#id4" id="id17">元组打包</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id5" id="id17">序列</a><ul>
-<li><a class="reference internal" href="#id6" id="id18">包括与排除</a></li>
-<li><a class="reference internal" href="#id7" id="id19">列表解析</a></li>
+<li><a class="reference internal" href="#list" id="id18">列表 (List)</a><ul>
+<li><a class="reference internal" href="#list-comprehension" id="id19">列表推导式 (list comprehension)</a></li>
+<li><a class="reference internal" href="#id5" id="id20">列表的上限</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id8" id="id20">循环</a></li>
-<li><a class="reference internal" href="#id9" id="id21">函数</a><ul>
-<li><a class="reference internal" href="#id10" id="id22">匿名函数</a></li>
-<li><a class="reference internal" href="#id11" id="id23">可选参数</a></li>
-<li><a class="reference internal" href="#args" id="id24">数量变化的参数(<tt class="docutils literal"><span class="pre">*args</span></tt>)</a></li>
-<li><a class="reference internal" href="#kwargs" id="id25">关键字参数(<tt class="docutils literal"><span class="pre">**kwargs</span></tt>)</a></li>
-<li><a class="reference internal" href="#id12" id="id26">函数修饰符</a></li>
-<li><a class="reference internal" href="#id13" id="id27">链式代码块</a></li>
-<li><a class="reference internal" href="#python-vs-javascript" id="id28">Python vs JavaScript</a></li>
+<li><a class="reference internal" href="#id6" id="id21">循环</a><ul>
+<li><a class="reference internal" href="#for" id="id22">for循环</a></li>
+<li><a class="reference internal" href="#while" id="id23">while循环</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id7" id="id24">函数</a><ul>
+<li><a class="reference internal" href="#id8" id="id25">匿名函数</a></li>
+<li><a class="reference internal" href="#id9" id="id26">内联函数</a></li>
+<li><a class="reference internal" href="#id10" id="id27">函数可选参数</a></li>
+<li><a class="reference internal" href="#args" id="id28">变长非关键字参数(<tt class="docutils literal"><span class="pre">*args</span></tt>)</a></li>
+<li><a class="reference internal" href="#kwargs" id="id29">关键字参数(<tt class="docutils literal"><span class="pre">**kwargs</span></tt>)</a></li>
+<li><a class="reference internal" href="#id11" id="id30">函数修饰符</a></li>
+<li><a class="reference internal" href="#id12" id="id31">链式代码块</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13" id="id32">其它惯用法</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <hr class="docutils" />
+<div class="section" id="tuple">
+<h2><a class="toc-backref" href="#id15">元组 (tuple)</a><a class="headerlink" href="#tuple" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id15">元组</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<div class="section" id="id4">
-<h3><a class="toc-backref" href="#id16">打包与解包时的推导</a><a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<h3><a class="toc-backref" href="#id16">元组解包与推断</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>与Python一样，RapydScript支持元组 打包(packing)以及解包(unpacking)时的推断与分配。</p>
+<div class="line-block">
+<div class="line"><strong>注：</strong> python对元组、列表、字典等序列或可迭代对象均支持解包操作。</div>
+<div class="line"><br /></div>
 </div>
+<p>虽然推断/隐含通常来说不太好，但有些时候可以让代码变得简洁。并且，它符合 <a class="reference external" href="http://blog.csdn.net/gzlaiyonghao/article/details/2151918">Python之禅</a> 中所描述的指导原则：&#8217;beautiful&#8217; takes priority over &#8216;explicit&#8217;（美的优先级高于显）。</p>
+<p>比如，若要交换两个变量，下面的代码看起来要比显式地定义一个临时变量要简洁：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># 先将等号右侧两个变量打包成新的元组(b, a)</span>
+<span class="c"># 赋值时再将其解包并分别赋给两个新的变量a和b</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p>同样，如果一个函数可以返回多个值，那么一个简单的语句就可以将其分配给多个变量：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">fun</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>而不是:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tmp</span> <span class="o">=</span> <span class="n">fun</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>由于JavaScript不支持元组，因此RapydScript在背后，实际使用的是JavaScript数组来做元组打包和解包操作，但实现了与在Python中一样的功能。注意，只有在将元组分配给多个参数时，解包操作才会发生：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">fun</span><span class="p">()</span>     <span class="c"># 做了解包操作</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">fun</span><span class="p">()</span>         <span class="c"># 未解包, tmp将会存储一组元素</span>
+</pre></div>
+</div>
+<p>在for循环中（参见 <a class="reference external" href="#for">for循环</a> ），也可以做解包操作：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="s">&#39;: &#39;</span><span class="o">+</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>注：</strong> enumerate()是一个内建的全局函数，用于迭代产生值。在python中，所有元组、列表、字典等序列或可迭代对象均可以被enumerate操作。</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id17">元组打包</a><a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>元组打包操作是元组解包的反向操作。它发生在对成组元素将进行分配的时候，而不是具体怎么被分配的过程中。比如，它可以发生在变量赋值和函数返回值的时候：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="c"># 实际上返回的是元组 (1, 2, 3)</span>
+</pre></div>
+</div>
+<p>总的来说，元组打包与解包操作基本只是一个的语法糖，它删除了分配逻辑中让程序显得丑陋的代码。比如，在本节开始处，交换两个变量值的操作的等价代码如下：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tmp</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="list">
+<h2><a class="toc-backref" href="#id18">列表 (List)</a><a class="headerlink" href="#list" title="永久链接至标题">¶</a></h2>
+<div class="section" id="list-comprehension">
+<h3><a class="toc-backref" href="#id19">列表推导式 (list comprehension)</a><a class="headerlink" href="#list-comprehension" title="永久链接至标题">¶</a></h3>
+<p>RapydScript的列表与JavaScript中的数组在概念上是一样的，都是可变的序列。不过，这里的列表有一些特殊的操作和用法，它们与Python中列表的特性很相像。</p>
+<p>RapydScript同样支持列表推导式，使用的语法和Python相同。</p>
+<div class="line-block">
+<div class="line"><strong>注：</strong> 列表推导式，就是利用列表创建新的列表，类似数学中的集合推导式</div>
+<div class="line"><br /></div>
+</div>
+<p>例如，你不必像下面这样写：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># 对range范围中的每个数求平方</span>
+<span class="c"># 如果不是3的倍数，就将其添加到列表myArray中</span>
+<span class="n">myArray</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">index</span><span class="o">*</span><span class="n">index</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">myArray</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="o">*</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这段代码可以写成：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">myArray</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="o">%</span><span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>注：</strong> range函数用于创建一个指定上下限的序列（列表），产生的序列包含下限的值，但不包含上限。</div>
+<div class="line"><br /></div>
+</div>
+<p><strong>提示：</strong> 这一小节有部分内容已经移除，原因是其中的一些怪异的部分在一些旧的Python编译器中并没有。当前实现的列表推导式与普通循环的工作方式差不多。</p>
 </div>
 <div class="section" id="id5">
-<h2><a class="toc-backref" href="#id17">序列</a><a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<h3><a class="toc-backref" href="#id20">列表的上限</a><a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>与在Pyhton中一样，RapydScript也有一个 range() 函数。虽然它很强大，但只是看代码的话，会发现它生成的结果并不明显。这有点让人难受，因为要花数秒钟来阅读代码，还要记住它不包含上限，这有损代码的流畅。作为补救，RapydScript从LiveScript中借用了 <tt class="docutils literal"><span class="pre">to/til</span></tt> 操作符（它也是Ruby中 <tt class="docutils literal"><span class="pre">list[../...]</span></tt> 分片操作容易阅读的版本）。</p>
+<p>比如，下面的4行代码具有相同的作用：</p>
+<div class="highlight-python"><div class="highlight"><pre>a = [3 to 8]
+a = [3 til 9]
+a = range(3, 9)
+a = [3, 4, 5, 6, 7, 8]
+</pre></div>
+</div>
+<p>你还可以在循环中使用这种形式的序列：</p>
+<div class="highlight-python"><div class="highlight"><pre>for i in [1 to 5]:
+    print(i)
+</pre></div>
+</div>
+<p>或者在列表推导式中使用：</p>
+<div class="highlight-python"><div class="highlight"><pre>[i*i for i in [1 to 6] if i%2 == 0]
+</pre></div>
+</div>
+<p>在编译时，<tt class="docutils literal"><span class="pre">to/til</span></tt> 语句将会转换成 range()。因此，上限和下限甚至可以使用变量或表达式。</p>
+<div class="highlight-python"><div class="highlight"><pre>num = 5
+rng = [num to num * 2]
+</pre></div>
+</div>
+<p>由于 <tt class="docutils literal"><span class="pre">to/til</span></tt> 操作符的优先级严格低于算术操作符，因此算术表达式的括号是可选的。</p>
+</div>
+</div>
 <div class="section" id="id6">
-<h3><a class="toc-backref" href="#id18">包括与排除</a><a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<h2><a class="toc-backref" href="#id21">循环</a><a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="section" id="for">
+<h3><a class="toc-backref" href="#id22">for循环</a><a class="headerlink" href="#for" title="永久链接至标题">¶</a></h3>
+<p>RapydScript中的循环工作方式与在Python中很相像，但与JavaScript很不相同。比如，你不能使用 <tt class="docutils literal"><span class="pre">for(i=0;i&lt;max;i++)</span></tt> 这样的语法。不过，你可以在一个序列上使用 <tt class="docutils literal"><span class="pre">for</span> <span class="pre">...</span> <span class="pre">in</span></tt> 语法。并且，你不用担心转换的JavaScript代码会添加一些额外不相关的东西。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">animals</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;cat&#39;</span><span class="p">,</span> <span class="s">&#39;dog&#39;</span><span class="p">,</span> <span class="s">&#39;mouse&#39;</span><span class="p">,</span> <span class="s">&#39;horse&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="n">animals</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;I have a &#39;</span><span class="o">+</span><span class="n">animal</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如果想在循环中使用序列中元素的索引，你可以使用 enumerate() 函数：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">animal</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">animals</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;index:&quot;</span><span class="o">+</span><span class="n">index</span><span class="p">,</span> <span class="s">&quot;animal:&quot;</span><span class="o">+</span><span class="n">animal</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>与Python相同，如果只是想根据序列中元素的索引进行操作，你可使用到 range() 函数：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">animals</span><span class="p">)):</span>    <span class="c"># 或者用 range(animals.length)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;animal &quot;</span><span class="o">+</span><span class="n">index</span><span class="o">+</span><span class="s">&quot; is a &quot;</span><span class="o">+</span><span class="n">animals</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>在编译成JavaScript基本语法的过程中，RapydScript会尽可能帮你自动对循环进行优化。所以，虽然你不能直接调用JavaScript的for语句，但也不会失去太多什么。</p>
+</div>
+<div class="section" id="while">
+<h3><a class="toc-backref" href="#id23">while循环</a><a class="headerlink" href="#while" title="永久链接至标题">¶</a></h3>
+</div>
 </div>
 <div class="section" id="id7">
-<h3><a class="toc-backref" href="#id19">列表解析</a><a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
-</div>
-</div>
+<h2><a class="toc-backref" href="#id24">函数</a><a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>通过上一章的 <a class="reference external" href="start.html#id3">简单的例子</a> ，我们在写第一个RapydScript程序时，已经学会了如何在RapydScript中定义一个函数。下面我们要介绍一些更多有关RapydScript函数的知识。</p>
 <div class="section" id="id8">
-<h2><a class="toc-backref" href="#id20">循环</a><a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<h3><a class="toc-backref" href="#id25">匿名函数</a><a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>与JavaScript一样，RapydScript运行我们使用匿名的函数。实际上，我们已经在前面的章节见到过（参见 <a class="reference external" href="start.html#id5">向外部API传递对象参数</a> ），当时我们创建了一个字典的字面对象，并且直接书写代码将匿名函数赋给 &#8216;onmouseover&#8217; 和 &#8216;onmouseout&#8217;。这看起来与Python的 lambda函数很相似，不过它的语法不像lamdba那样不方便，它并限制函数的所有代码必须写在一行中。下面是两种函数定义的方式，它们实际是等价的：</p>
+<div class="highlight-python"><div class="highlight"><pre>def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n-1)
+
+factorial = def(n):
+    if n == 0:
+        return 1
+    return n * factorial(n-1)
+</pre></div>
+</div>
+<p>也许现在一开始还看不出有什么好处。如果放到Python中，上面这段代码还会显得有点怪，因为它不能明显表示这种函数是要被拷贝或者分配给其它对象的。但是，如果你熟悉JavaScript的话，你就知道这对程序员来说，这种语法是很有用的，特别是在处理嵌套函数的时候。</p>
+<p>为了证明这种语法确实有用，下面我们来定义一个函数，用于创建并返回一个页面div元素。在用户按下鼠标不放的过程中，这个元素将会改变一个颜色。</p>
+<div class="highlight-python"><div class="highlight"><pre>def makeDivThatTurnsGreen():
+    div = $(&#39;&lt;div&gt;&lt;/div&gt;&#39;)
+
+    turnGreen = def(event):
+        div.css(&#39;background&#39;, &#39;green&#39;)
+
+    div.mousedown(turnGreen)
+
+    resetColor = def(event):
+        div.css(&#39;background&#39;, &#39;&#39;)
+
+    div.mouseup(resetColor)
+
+    return div
+</pre></div>
+</div>
+<p>也许第一眼看上去，匿名函数的好处还是不够明显。我们也可以创建一个匿名函数，然后分配给变量，这种方法替代方式也可以很容易做到上面的事。尽管如此，使用匿名函数最重要的是可以帮助我们迅速地表明意图：这些函数是用于将其绑定到另外的对象，既不是创建它们的主函数，也不是触发它们的逻辑，在我们的例子中，它们属于一个div对象。匿名函数最为有用的应用场景是：在一个匿名函数当前所在的对象中，创建一个在其它函数或对象中使用的元素，并且不会与当前代码混淆。</p>
+<p>下面，我们可以借助 jQuery 的 $(document).ready() 方法（参见 <a class="reference external" href="start.html#jquery">调用jQuery</a> ），将这个自定义的div元素添加到一个页面元素中。$(document).ready() 接受一个函数作为参数，并且在页面加载完毕时对其进行调用。由于与函数名无关，因此通常传递一个匿名函数。用RapydScipt编写这段代码如下：</p>
+<div class="highlight-python"><div class="highlight"><pre>$(document).ready(
+        def(): $(&quot;#display&quot;).append(makeDivThatTurnsGreen());
+    );
+</pre></div>
+</div>
+<p>此外，正如你在前面章节见到的，匿名函数可以用于避免创建过多的临时变量，从而让代码更简洁：</p>
+<div class="highlight-python"><div class="highlight"><pre>math_ops = {
+    add:    def(a, b): return a+b;,
+    sub:    def(a, b): return a-b;,
+    mul:    def(a, b): return a*b;,
+    div:    def(a, b): return a/b;,
+    roots:  def(a, b, c):
+        r = Math.sqrt(b*b - 4*a*c)
+        d = 2*a
+        return (-b + r)/d, (-b - r)/d
+}
+</pre></div>
+</div>
+<p>我肯定你一定同意上面的代码绝对要比先分别声明5个临时变量，然后再将它们分配给5个关键字所代表的对象要简单得多。</p>
 </div>
 <div class="section" id="id9">
-<h2><a class="toc-backref" href="#id21">函数</a><a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
-<div class="section" id="id10">
-<h3><a class="toc-backref" href="#id22">匿名函数</a><a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<h3><a class="toc-backref" href="#id26">内联函数</a><a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>你应该注意到，在上面的这个例子中，将函数定义的头部（即def()）和函数体放在了同一行。我们将其称为内联函数。它是RapydScript中，一种可以简化代码的特性。尽管使用 <tt class="docutils literal"><span class="pre">;</span></tt> 可以把多条函数语句链接起来，构成一个更长的函数。但是，还是最好问问自己是否有必要将所有语句都写在同一行中，这是一条很好的经验法则。一般来说，如果分号超过2个，答案往往是否定的。</p>
+<div class="line-block">
+<div class="line"><strong>注：</strong> 在上一节的 <a class="reference external" href="start.html#id5">params对象的例子</a> 中可以看到，在非内联函数中也可以使用分号来作为新行的分隔符。</div>
+<div class="line"><br /></div>
 </div>
-<div class="section" id="id11">
-<h3><a class="toc-backref" href="#id23">可选参数</a><a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id27">函数可选参数</a><a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<p>与Python一样，JavaScript允许向函数传递可选参数。</p>
+<p>不过，JavaScript不像Python那样，可以给函数参数分配默认值，可选参数也不能正常工作。如果你忘记给一个参数传值，JavaScript只是简单的将参数变量的值设为 undefined，怎么处理则完全交给你。如果你忘记处理，此后遇到任何类型的算术计算，你都会为此付出代价。那时，你将会最终会得到 NaN（而不是数字）、无限值或者其它奇怪的值，以及引发一个几百行由此导致的错误报告（祝你调试顺利）。</p>
+<p>幸运的是，RapydScript允许使用更为理智的可选参数，它与Python极为相似。例如下面的例子中，允许你向函数参数color传入一个表示背景颜色的参数值，或者使用默认参数值的black（格式是 [r,g,b,a]）。</p>
+<div class="highlight-python"><div class="highlight"><pre>def setColor(color=[0,0,0,1]):
+    $(&#39;body&#39;).css(&#39;background&#39;, &#39;rgba(&#39;+&#39;,&#39;.join(color)+&#39;)&#39;)
+</pre></div>
+</div>
+<p>这里有一点需要注意，与Python略有不同的是，RapydScript会在每次调用函数的时候，都重新穿件一个单独的局部变量对象来保存函数可选参数的默认值。这使得RapydScript在这方面不是那么高效，但是可以避免扰乱现有的对象。</p>
+<div class="line-block">
+<div class="line"><strong>注：</strong> 在实际的Python中，可选参数的默认值可以为一个可以调用的外部函数，函数仅在第一次执行时对可选参数进行求值。以后即使可选参数默认的外部函数返回值或代码逻辑有所改变，外部函数也不会得到重新执行，函数只会重复使用默认参数第一次传入的值。</div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="section" id="args">
-<h3><a class="toc-backref" href="#id24">数量变化的参数(<tt class="docutils literal"><span class="pre">*args</span></tt>)</a><a class="headerlink" href="#args" title="永久链接至标题">¶</a></h3>
+<h3><a class="toc-backref" href="#id28">变长非关键字参数(<tt class="docutils literal"><span class="pre">*args</span></tt>)</a><a class="headerlink" href="#args" title="永久链接至标题">¶</a></h3>
+<p>与Python一样，JavaScript允许</p>
 </div>
 <div class="section" id="kwargs">
-<h3><a class="toc-backref" href="#id25">关键字参数(<tt class="docutils literal"><span class="pre">**kwargs</span></tt>)</a><a class="headerlink" href="#kwargs" title="永久链接至标题">¶</a></h3>
+<h3><a class="toc-backref" href="#id29">关键字参数(<tt class="docutils literal"><span class="pre">**kwargs</span></tt>)</a><a class="headerlink" href="#kwargs" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id11">
+<h3><a class="toc-backref" href="#id30">函数修饰符</a><a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id12">
-<h3><a class="toc-backref" href="#id26">函数修饰符</a><a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<h3><a class="toc-backref" href="#id31">链式代码块</a><a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+</div>
 </div>
 <div class="section" id="id13">
-<h3><a class="toc-backref" href="#id27">链式代码块</a><a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
-</div>
-<div class="section" id="python-vs-javascript">
-<h3><a class="toc-backref" href="#id28">Python vs JavaScript</a><a class="headerlink" href="#python-vs-javascript" title="永久链接至标题">¶</a></h3>
-</div>
+<h2><a class="toc-backref" href="#id32">其它惯用法</a><a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
 </div>
 </div>
 

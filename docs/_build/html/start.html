@@ -217,15 +217,15 @@
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id12">向外部API传递对象参数</a><a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>在许多的外部API中，都使用对象来描述输入。与在JavaScript一样，你可以很简单地使用RapydScript创建，方式与你在JavaScript中相同，只不过是以一个Python字典：</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">styles</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;background-color&#39;</span><span class="p">:</span> <span class="s">&#39;#ffe&#39;</span><span class="p">,</span>
-    <span class="s">&#39;border-left&#39;</span><span class="p">:</span>      <span class="s">&#39;5px solid #ccc&#39;</span><span class="p">,</span>
-    <span class="s">&#39;width&#39;</span><span class="p">:</span>            <span class="mi">50</span><span class="p">,</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">styles</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;background-color&#39;</span><span class="o">:</span> <span class="s1">&#39;#ffe&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;border-left&#39;</span><span class="o">:</span>      <span class="s1">&#39;5px solid #ccc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;width&#39;</span><span class="o">:</span>            <span class="mi">50</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>你可以像下面这样，将其传递给 jQuery：</p>
-<div class="highlight-python"><div class="highlight"><pre>$(&#39;#element&#39;).css(styles)
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#element&#39;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="nx">styles</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>RapydScript的另外一个特性是，你可以直接将一个函数写成一个对象的一部分。JavaScript的API经常使用一个带有 callback/handler 函数的对象作为其输入参数。RapydScript允许你创建这样的对象，并且没有怪癖的写法。例如：</p>
@@ -245,12 +245,12 @@
 </div>
 <p>注意在函数定义完之后新的一行中的 逗号，编译需要通过它知道对象在此之后还有写有更多属性。它不能写在函数定义最后一条语句的同一行中，否则编译器会把它解析为函数的一部分。</p>
 <p>与在Python中相似，RapydScript支持在代码中使用 分号 表示开始新的一行。因此，你也可以像下面这样，将逗号放在函数定义的最后一条语句所在的同一行中：</p>
-<div class="highlight-python"><div class="highlight"><pre>hash = {
-    &#39;foo&#39;:  def():
-        print(&#39;foo&#39;);,
-    &#39;bar&#39;:  def():
-        print(&#39;bar&#39;)
-}
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">hash</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;foo&#39;</span><span class="o">:</span>  <span class="nx">def</span><span class="p">()</span><span class="o">:</span>
+        <span class="nx">print</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);,</span>
+    <span class="s1">&#39;bar&#39;</span><span class="o">:</span>  <span class="nx">def</span><span class="p">()</span><span class="o">:</span>
+        <span class="nx">print</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
