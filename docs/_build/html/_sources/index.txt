@@ -10,7 +10,7 @@ RapydScript文档
 文档目录:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    intro
    install

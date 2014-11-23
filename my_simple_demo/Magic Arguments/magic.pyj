@@ -1,0 +1,77 @@
+###########################################################
+# Named Arguments 
+###########################################################
+import stdlib
+
+### Keyword Arguments 
+
+def test(foo, bar, kw):
+    print(foo)  # 'baz'
+    print(bar)  # 99
+    print(kw)   # {foo: 1. bar: 3}
+    print(kw.foo)   # 1
+
+#test('baz', foo=1, 99, bar=3)  # equivalent to: test('baz', 99, {foo: 1, bar: 3})
+
+### kwargs Decorator
+@kwargs
+def test_kwargs(foo, bar, kw):
+    print(foo)  # 1
+    print(bar)  # 3
+    print(kw)   # {foo: 1. bar: 3}
+    print(kw.foo)   # 1
+
+# works: 
+test_kwargs(bar=3, foo=1, kw={foo: 1, bar: 3})
+
+# [issue1], kw will not be print: test_kwargs(bar=3, foo=1, {foo: 1, bar: 3})
+# [issue2], kw will not be print: test_kwargs('baz', foo=1, 99, bar=3) , 
+#       this is equivalent to call test_kwargs("baz", 99, {foo: 1, bar: 3})
+
+@kwargs
+def my_func(m, n):
+    print(m)
+    print(n)
+
+
+my_func(n='She was here', m='He was here')
+
+
+
+###########################################################
+# Variable Number of Arguments (*args)
+###########################################################
+
+### first
+### collecting args
+
+a = 'He was here'
+b = 'and here'
+y = 'Yes!'
+
+args_list1 = [a, b]
+
+def my_print(m, *args):
+    console.log(m, *args)
+
+# equivalent to: my_print(y, *args_list1) ,
+# or my_print(y, *(a, b))
+my_print(y, a, b)  
+
+
+### second
+### assigning args
+
+a = 'I was there'
+b = 'and there'
+
+args_list2 = (a, b)
+
+def depacking_print(m, n, p="\n She is there!"):
+    console.log(m, n, p)
+
+depacking_print(*args_list2)
+
+
+
+

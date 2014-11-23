@@ -58,7 +58,7 @@ RapydScript编译器支持输入多个文件进行处理。建议你先指定输
 -i, --auto-bind          自动绑定方法到它们所属的类(这更加Pythonic, 但可能会收到其他JS库的干扰)
 --screw-ie8              编译优化Optimize compilation, 牺牲了与其它老的编译器的兼容性。
 
-其余的选项都是由UglifyJS提供，但目前还有没有全部测试通过，原因是RapydScript与UglifyJS的AST不相同。这些选项最终会被移除，或者对与RapydScript有关的做一定的修改。
+其余的选项都是由UglifyJS提供，但目前还有没有全部测试通过，原因是RapydScript与UglifyJS的AST（语法树）不相同。这些选项最终会被移除，或者对与RapydScript有关的做一定的修改。
 
 下面是一个典型的编译命令：
 

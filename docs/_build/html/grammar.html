@@ -81,7 +81,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#list">列表 (List)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id6">循环</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id7">函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id13">其它惯用法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">其它惯用法</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="class.html">类</a><ul>
@@ -143,46 +143,50 @@
           <div role="main">
             
   <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id14">基本语法</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><a class="toc-backref" href="#id19">基本语法</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="contents topic" id="id2">
 <p class="topic-title first">目录</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id14">基本语法</a><ul>
-<li><a class="reference internal" href="#tuple" id="id15">元组 (tuple)</a><ul>
-<li><a class="reference internal" href="#id3" id="id16">元组解包与推断</a></li>
-<li><a class="reference internal" href="#id4" id="id17">元组打包</a></li>
+<li><a class="reference internal" href="#id1" id="id19">基本语法</a><ul>
+<li><a class="reference internal" href="#tuple" id="id20">元组 (tuple)</a><ul>
+<li><a class="reference internal" href="#id3" id="id21">元组解包与推断</a></li>
+<li><a class="reference internal" href="#id4" id="id22">元组打包</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#list" id="id18">列表 (List)</a><ul>
-<li><a class="reference internal" href="#list-comprehension" id="id19">列表推导式 (list comprehension)</a></li>
-<li><a class="reference internal" href="#id5" id="id20">列表的上限</a></li>
+<li><a class="reference internal" href="#list" id="id23">列表 (List)</a><ul>
+<li><a class="reference internal" href="#list-comprehension" id="id24">列表推导式 (list comprehension)</a></li>
+<li><a class="reference internal" href="#id5" id="id25">列表的上限</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6" id="id21">循环</a><ul>
-<li><a class="reference internal" href="#for" id="id22">for循环</a></li>
-<li><a class="reference internal" href="#while" id="id23">while循环</a></li>
+<li><a class="reference internal" href="#id6" id="id26">循环</a><ul>
+<li><a class="reference internal" href="#for" id="id27">for循环</a></li>
+<li><a class="reference internal" href="#while" id="id28">while循环</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id7" id="id24">函数</a><ul>
-<li><a class="reference internal" href="#id8" id="id25">匿名函数</a></li>
-<li><a class="reference internal" href="#id9" id="id26">内联函数</a></li>
-<li><a class="reference internal" href="#id10" id="id27">函数可选参数</a></li>
-<li><a class="reference internal" href="#args" id="id28">变长非关键字参数(<tt class="docutils literal"><span class="pre">*args</span></tt>)</a></li>
-<li><a class="reference internal" href="#kwargs" id="id29">关键字参数(<tt class="docutils literal"><span class="pre">**kwargs</span></tt>)</a></li>
-<li><a class="reference internal" href="#id11" id="id30">函数修饰符</a></li>
-<li><a class="reference internal" href="#id12" id="id31">链式代码块</a></li>
+<li><a class="reference internal" href="#id7" id="id29">函数</a><ul>
+<li><a class="reference internal" href="#id8" id="id30">匿名函数</a></li>
+<li><a class="reference internal" href="#id9" id="id31">内联函数</a></li>
+<li><a class="reference internal" href="#id10" id="id32">参数魔法</a><ul>
+<li><a class="reference internal" href="#id11" id="id33">函数可选参数</a></li>
+<li><a class="reference internal" href="#def-func-args" id="id34">收集变长参数 (<tt class="docutils literal"><span class="pre">def</span> <span class="pre">func(*args)</span></tt>)</a></li>
+<li><a class="reference internal" href="#func-args-list" id="id35">分配参数 (<tt class="docutils literal"><span class="pre">func(*args_list)</span></tt>)</a></li>
+<li><a class="reference internal" href="#kwargs" id="id36">关键字参数(<tt class="docutils literal"><span class="pre">**kwargs</span></tt>)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id13" id="id32">其它惯用法</a></li>
+<li><a class="reference internal" href="#id16" id="id37">函数修饰符</a></li>
+<li><a class="reference internal" href="#id17" id="id38">链式代码块</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id18" id="id39">其它惯用法</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <hr class="docutils" />
 <div class="section" id="tuple">
-<h2><a class="toc-backref" href="#id15">元组 (tuple)</a><a class="headerlink" href="#tuple" title="永久链接至标题">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">元组 (tuple)</a><a class="headerlink" href="#tuple" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id3">
-<h3><a class="toc-backref" href="#id16">元组解包与推断</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<h3><a class="toc-backref" href="#id21">元组解包与推断</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <p>与Python一样，RapydScript支持元组 打包(packing)以及解包(unpacking)时的推断与分配。</p>
 <div class="line-block">
 <div class="line"><strong>注：</strong> python对元组、列表、字典等序列或可迭代对象均支持解包操作。</div>
@@ -222,7 +226,7 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h3><a class="toc-backref" href="#id17">元组打包</a><a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<h3><a class="toc-backref" href="#id22">元组打包</a><a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>元组打包操作是元组解包的反向操作。它发生在对成组元素将进行分配的时候，而不是具体怎么被分配的过程中。比如，它可以发生在变量赋值和函数返回值的时候：</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
     <span class="k">return</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="c"># 实际上返回的是元组 (1, 2, 3)</span>
@@ -237,9 +241,9 @@
 </div>
 </div>
 <div class="section" id="list">
-<h2><a class="toc-backref" href="#id18">列表 (List)</a><a class="headerlink" href="#list" title="永久链接至标题">¶</a></h2>
+<h2><a class="toc-backref" href="#id23">列表 (List)</a><a class="headerlink" href="#list" title="永久链接至标题">¶</a></h2>
 <div class="section" id="list-comprehension">
-<h3><a class="toc-backref" href="#id19">列表推导式 (list comprehension)</a><a class="headerlink" href="#list-comprehension" title="永久链接至标题">¶</a></h3>
+<h3><a class="toc-backref" href="#id24">列表推导式 (list comprehension)</a><a class="headerlink" href="#list-comprehension" title="永久链接至标题">¶</a></h3>
 <p>RapydScript的列表与JavaScript中的数组在概念上是一样的，都是可变的序列。不过，这里的列表有一些特殊的操作和用法，它们与Python中列表的特性很相像。</p>
 <p>RapydScript同样支持列表推导式，使用的语法和Python相同。</p>
 <div class="line-block">
@@ -266,7 +270,7 @@
 <p><strong>提示：</strong> 这一小节有部分内容已经移除，原因是其中的一些怪异的部分在一些旧的Python编译器中并没有。当前实现的列表推导式与普通循环的工作方式差不多。</p>
 </div>
 <div class="section" id="id5">
-<h3><a class="toc-backref" href="#id20">列表的上限</a><a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3><a class="toc-backref" href="#id25">列表的上限</a><a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>与在Pyhton中一样，RapydScript也有一个 range() 函数。虽然它很强大，但只是看代码的话，会发现它生成的结果并不明显。这有点让人难受，因为要花数秒钟来阅读代码，还要记住它不包含上限，这有损代码的流畅。作为补救，RapydScript从LiveScript中借用了 <tt class="docutils literal"><span class="pre">to/til</span></tt> 操作符（它也是Ruby中 <tt class="docutils literal"><span class="pre">list[../...]</span></tt> 分片操作容易阅读的版本）。</p>
 <p>比如，下面的4行代码具有相同的作用：</p>
 <div class="highlight-python"><div class="highlight"><pre>a = [3 to 8]
@@ -293,9 +297,9 @@ rng = [num to num * 2]
 </div>
 </div>
 <div class="section" id="id6">
-<h2><a class="toc-backref" href="#id21">循环</a><a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<h2><a class="toc-backref" href="#id26">循环</a><a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <div class="section" id="for">
-<h3><a class="toc-backref" href="#id22">for循环</a><a class="headerlink" href="#for" title="永久链接至标题">¶</a></h3>
+<h3><a class="toc-backref" href="#id27">for循环</a><a class="headerlink" href="#for" title="永久链接至标题">¶</a></h3>
 <p>RapydScript中的循环工作方式与在Python中很相像，但与JavaScript很不相同。比如，你不能使用 <tt class="docutils literal"><span class="pre">for(i=0;i&lt;max;i++)</span></tt> 这样的语法。不过，你可以在一个序列上使用 <tt class="docutils literal"><span class="pre">for</span> <span class="pre">...</span> <span class="pre">in</span></tt> 语法。并且，你不用担心转换的JavaScript代码会添加一些额外不相关的东西。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">animals</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;cat&#39;</span><span class="p">,</span> <span class="s">&#39;dog&#39;</span><span class="p">,</span> <span class="s">&#39;mouse&#39;</span><span class="p">,</span> <span class="s">&#39;horse&#39;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="n">animals</span><span class="p">:</span>
@@ -315,14 +319,14 @@ rng = [num to num * 2]
 <p>在编译成JavaScript基本语法的过程中，RapydScript会尽可能帮你自动对循环进行优化。所以，虽然你不能直接调用JavaScript的for语句，但也不会失去太多什么。</p>
 </div>
 <div class="section" id="while">
-<h3><a class="toc-backref" href="#id23">while循环</a><a class="headerlink" href="#while" title="永久链接至标题">¶</a></h3>
+<h3><a class="toc-backref" href="#id28">while循环</a><a class="headerlink" href="#while" title="永久链接至标题">¶</a></h3>
 </div>
 </div>
 <div class="section" id="id7">
-<h2><a class="toc-backref" href="#id24">函数</a><a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<h2><a class="toc-backref" href="#id29">函数</a><a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <p>通过上一章的 <a class="reference external" href="start.html#id3">简单的例子</a> ，我们在写第一个RapydScript程序时，已经学会了如何在RapydScript中定义一个函数。下面我们要介绍一些更多有关RapydScript函数的知识。</p>
 <div class="section" id="id8">
-<h3><a class="toc-backref" href="#id25">匿名函数</a><a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<h3><a class="toc-backref" href="#id30">匿名函数</a><a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <p>与JavaScript一样，RapydScript运行我们使用匿名的函数。实际上，我们已经在前面的章节见到过（参见 <a class="reference external" href="start.html#id5">向外部API传递对象参数</a> ），当时我们创建了一个字典的字面对象，并且直接书写代码将匿名函数赋给 &#8216;onmouseover&#8217; 和 &#8216;onmouseout&#8217;。这看起来与Python的 lambda函数很相似，不过它的语法不像lamdba那样不方便，它并限制函数的所有代码必须写在一行中。下面是两种函数定义的方式，它们实际是等价的：</p>
 <div class="highlight-python"><div class="highlight"><pre>def factorial(n):
     if n == 0:
@@ -376,7 +380,7 @@ factorial = def(n):
 <p>我肯定你一定同意上面的代码绝对要比先分别声明5个临时变量，然后再将它们分配给5个关键字所代表的对象要简单得多。</p>
 </div>
 <div class="section" id="id9">
-<h3><a class="toc-backref" href="#id26">内联函数</a><a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<h3><a class="toc-backref" href="#id31">内联函数</a><a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
 <p>你应该注意到，在上面的这个例子中，将函数定义的头部（即def()）和函数体放在了同一行。我们将其称为内联函数。它是RapydScript中，一种可以简化代码的特性。尽管使用 <tt class="docutils literal"><span class="pre">;</span></tt> 可以把多条函数语句链接起来，构成一个更长的函数。但是，还是最好问问自己是否有必要将所有语句都写在同一行中，这是一条很好的经验法则。一般来说，如果分号超过2个，答案往往是否定的。</p>
 <div class="line-block">
 <div class="line"><strong>注：</strong> 在上一节的 <a class="reference external" href="start.html#id5">params对象的例子</a> 中可以看到，在非内联函数中也可以使用分号来作为新行的分隔符。</div>
@@ -384,10 +388,15 @@ factorial = def(n):
 </div>
 </div>
 <div class="section" id="id10">
-<h3><a class="toc-backref" href="#id27">函数可选参数</a><a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
-<p>与Python一样，JavaScript允许向函数传递可选参数。</p>
-<p>不过，JavaScript不像Python那样，可以给函数参数分配默认值，可选参数也不能正常工作。如果你忘记给一个参数传值，JavaScript只是简单的将参数变量的值设为 undefined，怎么处理则完全交给你。如果你忘记处理，此后遇到任何类型的算术计算，你都会为此付出代价。那时，你将会最终会得到 NaN（而不是数字）、无限值或者其它奇怪的值，以及引发一个几百行由此导致的错误报告（祝你调试顺利）。</p>
-<p>幸运的是，RapydScript允许使用更为理智的可选参数，它与Python极为相似。例如下面的例子中，允许你向函数参数color传入一个表示背景颜色的参数值，或者使用默认参数值的black（格式是 [r,g,b,a]）。</p>
+<h3><a class="toc-backref" href="#id32">参数魔法</a><a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id11">
+<h4><a class="toc-backref" href="#id33">函数可选参数</a><a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
+<div class="line-block">
+<div class="line"><strong>注：</strong> 可选参数（或者缺省参数）是指如果在调用函数时不为其传递值，该参数将获得它定义时所给的缺省值。可选参数的定义时使用了传递 <a class="reference external" href="grammar.html#kwargs">关键字参数</a> 的方式。</div>
+<div class="line"><br /></div>
+</div>
+<p>与Python一样，JavaScript的函数参数支持可选参数。不过，JavaScript与Python不同的是，如果给函数的参数分配默认值，是不起作用的。如果你忘记给一个参数传值，JavaScript只是简单的将参数变量的值设为 undefined，怎么处理则完全交给你。如果你忘记处理，此后遇到任何类型的算术计算，你都会为此付出代价。那时，你将会最终会得到 NaN（而不是数字）、无限值或者其它奇怪的值，以及引发一个几百行由此导致的错误报告（祝你调试顺利）。</p>
+<p>幸运的是，RapydScript允许使用更为理智的可选参数，它与Python极为相似。例如下面的例子中，允许你向函数参数color传入一个表示背景颜色的参数值，或者使用缺省的参数值的black（格式是 [r,g,b,a]）。</p>
 <div class="highlight-python"><div class="highlight"><pre>def setColor(color=[0,0,0,1]):
     $(&#39;body&#39;).css(&#39;background&#39;, &#39;rgba(&#39;+&#39;,&#39;.join(color)+&#39;)&#39;)
 </pre></div>
@@ -396,24 +405,112 @@ factorial = def(n):
 <div class="line-block">
 <div class="line"><strong>注：</strong> 在实际的Python中，可选参数的默认值可以为一个可以调用的外部函数，函数仅在第一次执行时对可选参数进行求值。以后即使可选参数默认的外部函数返回值或代码逻辑有所改变，外部函数也不会得到重新执行，函数只会重复使用默认参数第一次传入的值。</div>
 <div class="line"><br /></div>
+<div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="args">
-<h3><a class="toc-backref" href="#id28">变长非关键字参数(<tt class="docutils literal"><span class="pre">*args</span></tt>)</a><a class="headerlink" href="#args" title="永久链接至标题">¶</a></h3>
-<p>与Python一样，JavaScript允许</p>
+<div class="section" id="def-func-args">
+<h4><a class="toc-backref" href="#id34">收集变长参数 (<tt class="docutils literal"><span class="pre">def</span> <span class="pre">func(*args)</span></tt>)</a><a class="headerlink" href="#def-func-args" title="永久链接至标题">¶</a></h4>
+<p>RapydScript的函数定义支持一种特殊参数定义形式，从而允许用户在调用函数时，向其传递任意数量的参数，这是Python中一种参见的参数魔法。</p>
+<p>虽然与Python一样，JavaScript也允许编写参数个数可变的函数，并有在此之上有自己完整实现逻辑。比如，在JavaScript中利用了这个特性的 Math.max() 、 console.log() 以及 数组的 concat() 方法等。然而，JavaScript并不像Python，它提供的支持并不直观。你必须在函数中使用一个特殊的可迭代元素，叫做 <tt class="docutils literal"><span class="pre">arguments</span></tt>，它具有数组的一些属性但没有支持数组的所有功能。因此，在函数调用中，如果你想要把数组展开为一个参数列表供函数使用，你必须使用 <tt class="docutils literal"><span class="pre">.apply</span></tt> 方法，而不是用一般的方式调用这个函数。</p>
+<p>现在，RapydScript实现了将Python风格的 <tt class="docutils literal"><span class="pre">*args</span></tt> 方式转换为JavaScript。比如，下面定义的函数接受两个参数a、b，并且把余下的参数包装成一个数组（虽然实际转换的JavaScript代码是用一个数组实现，但不是JavaScript那样用一个蹩脚的 <tt class="docutils literal"><span class="pre">arguments</span></tt> 对象。）：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">doSomething</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>注：</strong> <tt class="docutils literal"><span class="pre">*args</span></tt> 代表余下参数，它接受任意个数的参数值。比如 doSomething(a, b, c, d)，甚至更多的值。你也可以在别处预先定义一个列表 args_list = (c, d) 或 args_list = [c, d]，然后使用doSomething(a, b, <a href="#id12"><span class="problematic" id="id13">*</span></a>args_list)的方式调用。</div>
+<div class="line"><br /></div>
+<div class="line">虽然，与Python有些不同，RapydScript不是采用元组来打包余下的参数，但对我们的要实现功能没有影响。</div>
+<div class="line"><br /></div>
+<div class="line">更多变长知识可以参考 <a class="reference external" href="http://www.pythondoc.com/pythontutorial27/controlflow.html#tut-arbitraryargs">《python官方文档中文版》</a> ，或者w3cschool的 <a class="reference external" href="http://www.w3cschool.cc/python/python-functions.html">《python基础教程》</a> 。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="func-args-list">
+<h4><a class="toc-backref" href="#id35">分配参数 (<tt class="docutils literal"><span class="pre">func(*args_list)</span></tt>)</a><a class="headerlink" href="#func-args-list" title="永久链接至标题">¶</a></h4>
+<p>反过来，在类似下面的函数调用中，则会将一个包装成元组或列表的多个变量（实际是一个数组）解包为独立的参数值，并依次传递给函数的多个非关键字参数或一个变长的魔法参数。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">doSomethingElse</span><span class="p">(</span><span class="o">*</span><span class="n">args_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>注：</strong> 函数doSomethingElse参数列表除了定义成 def doSomethingElse(<a href="#id14"><span class="problematic" id="id15">*</span></a>args)，还可以定义为普通的函数形式 def doSomethingElse(a, b, c, d) 。</div>
+<div class="line"><br /></div>
+<div class="line">它们都可以采用上面的调用方式。然而，定义方式取决于你在编写 doSomethingElse() 时，你是否真的知道函数的具体有哪些参数。不过，这种调用的方式最适用的情况还是函数定义时也采用变长的魔法参数时候。</div>
+<div class="line"><br /></div>
+</div>
+<p>所以，当你得到一个由多个元素组成的列表，并且不知道列表的具体长度时，这种方式非常有用。</p>
+<p>下面的例子中，print函数（内建全局函数，内部调用的是console.log方法）本身接受变长参数，下面是两种等价的调用打印函数print的方式：</p>
+<div class="highlight-python"><div class="highlight"><pre># 普通方式
+a = &#39;I was here&#39;
+b = &#39;and there&#39;
+print(a, b)
+
+# 解包列表进行分配方式
+a = &#39;I was here&#39;
+b = &#39;and there&#39;
+args_list = [a, b]
+print(*argslist)
+</pre></div>
+</div>
+<p>在这个例子中，我们还不能完全看出是用 * 操作符的好处。但是，如果 <tt class="docutils literal"><span class="pre">args_list</span></tt> 的值是来自外部（比如来自其它函数执行的结果），我们很有可能不知道它的长度。那么， * 操作符将会非常方便。</p>
 </div>
 <div class="section" id="kwargs">
-<h3><a class="toc-backref" href="#id29">关键字参数(<tt class="docutils literal"><span class="pre">**kwargs</span></tt>)</a><a class="headerlink" href="#kwargs" title="永久链接至标题">¶</a></h3>
+<h4><a class="toc-backref" href="#id36">关键字参数(<tt class="docutils literal"><span class="pre">**kwargs</span></tt>)</a><a class="headerlink" href="#kwargs" title="永久链接至标题">¶</a></h4>
+<div class="line-block">
+<div class="line"><strong>注：</strong> 关键字参数 （Keyword Arguments）：是相较于位置参数而言的，它解决了调用函数时，给函数传递的参数时，必须按参数位置传递的问题。可以把它理解为是一种参数传递的方式。位置参数、关键字参数、可选参数、列表解包都是参数传递的方式（此外，“分割”字典RapydScript还不支持，它是Python支持的一种方式）。</div>
+<div class="line"><br /></div>
+<div class="line">因为传递参数时使用了参数的名字，因此关键字参数有时也被称为命名参数。</div>
+<div class="line"><br /></div>
+<div class="line">位置参数和关键字参数（命名参数）是可以联合使用的。但是，除非你很确定有这个必要，否则应避免混合使用。一般来说，位置参数一般是强制要求用户传递的参数。</div>
+<div class="line"><br /></div>
+<div class="line">前面已经看到，关键字参数在定义函数的 <a class="reference external" href="grammar.html#id11">可选参数</a> 时直接使用到。</div>
+<div class="line"><br /></div>
 </div>
-<div class="section" id="id11">
-<h3><a class="toc-backref" href="#id30">函数修饰符</a><a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>RapydScript所支持的关键字参数与Python不是完全的一致（没有实现 ** 操作符，它在Python中用于收集传递的参数值列表中剩余的关键字参数）。这是出于减小性能开销的考虑。因为你编写的函数99%不需要这个特性。</p>
+<p>首先，让我来看一下RapydScript中函数调用的两种等价方式：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">test</span><span class="p">(</span><span class="s">&#39;baz&#39;</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="n">bar</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">test</span><span class="p">(</span><span class="s">&#39;baz&#39;</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="p">{</span><span class="n">foo</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bar</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
+</pre></div>
 </div>
-<div class="section" id="id12">
-<h3><a class="toc-backref" href="#id31">链式代码块</a><a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><strong>注：</strong> 实际上Python与此有不同，Pyhton是不允许在用命名参数的传递方式之后再用非命名参数方式传递普通参数，否则会报错，但RapydScript没有如此严格。</div>
+<div class="line"><br /></div>
+<div class="line">尽管如此，更符合Python风格的好习惯是按照下面的普通参数、关键字参数、哈希列表（字典）的顺序传递参数，比如:  test( &#8216;baz&#8217;, bar=99, {foo: 1, bar: 3} )</div>
+<div class="line"><br /></div>
+</div>
+<p>对于已经熟悉Python的人，可能容易体会这种调用方式的方便之处。</p>
+<p>但就两种方式本身来说，它们都会首先在对命名参数（关键字参数）进行收集，然后将其放进一个哈希表（字典）中，并将哈希表传递给函数的最后一个参数（最后，会把剩下的参数按位置分配）。这也就是说，除非你的函数明显知道（其实是要你自己清楚这一点）收集的命名参数的哈希表位于最后一个参数中。否则，RapydScript普通函数是不能自己确定最后一个参数是什么的。</p>
+<p>我们来看一个例子，函数的定义如下，可以看一下在上面的调用后，它的每个参数取得的值：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">bar</span><span class="p">,</span> <span class="n">kw</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>  <span class="c"># &#39;baz&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>  <span class="c"># 99</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">kw</span><span class="p">)</span>   <span class="c"># {foo: 1. bar: 3}</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">kw</span><span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">])</span>   <span class="c"># 1</span>
+</pre></div>
+</div>
+<p>我们没有必要关注于目前关键字收集分配的强制约定，因为只是这样收集起来就结束，还没有实现Python中关键字参数最重要的特性。关键字参数最为重要的用途是可以在传递参数时不用考虑参数的位置，幸运地是，RapydScript有一个 <tt class="docutils literal"><span class="pre">kwargs</span></tt> 函数修饰符，用于模拟Python中的这种特性。比如：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">test_kwargs</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">bar</span><span class="p">,</span> <span class="n">kw</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>  <span class="c"># 1</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>  <span class="c"># 3</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">kw</span><span class="p">)</span>   <span class="c"># {foo: 1. bar: 3}</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">kw</span><span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">])</span>   <span class="c"># 1</span>
+
+<span class="c"># works:</span>
+<span class="n">test_kwargs</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kw</span><span class="o">=</span><span class="p">{</span><span class="n">foo</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bar</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
+</pre></div>
 </div>
 </div>
-<div class="section" id="id13">
-<h2><a class="toc-backref" href="#id32">其它惯用法</a><a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id16">
+<h3><a class="toc-backref" href="#id37">函数修饰符</a><a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id17">
+<h3><a class="toc-backref" href="#id38">链式代码块</a><a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id18">
+<h2><a class="toc-backref" href="#id39">其它惯用法</a><a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h2>
 </div>
 </div>
 

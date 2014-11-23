@@ -1,2 +1,2 @@
-@call rapydscript helloworld.pyj factorial.pyj -o helloworld.js
+@call rapydscript helloworld.pyj factorial.pyj -o factorial.js -p
 pause

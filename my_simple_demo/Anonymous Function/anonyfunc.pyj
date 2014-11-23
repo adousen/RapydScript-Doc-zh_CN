@@ -1,5 +1,5 @@
 def makeDivThatTurnsGreen():
-    div = $('<div></div>').text('press on it to see the color change')
+    div = $('<div></div>').text('Press on it to see the change of color')
 
     turnGreen = def(event):
         div.css('background', 'green')
