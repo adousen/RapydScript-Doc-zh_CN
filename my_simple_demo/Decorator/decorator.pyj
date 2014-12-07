@@ -1,0 +1,38 @@
+###########################################################
+# Decorator
+###########################################################
+# define decorator  
+def makebold(fn):
+    def wrapped():
+        return "<b>" + fn() + "</b>"
+    return wrapped
+
+def makeitalic(fn):
+    def wrapped():
+        return "<i>" + fn() + "</i>"
+    return wrapped
+
+# use decorator   
+@makebold
+@makeitalic
+def hello():
+    return "hello world"
+
+## passing argument to decorator is not supported
+# 
+#def makefontsize(fn):
+#    def wrapped(m):
+#        return "<i>" + fn() + "</i>"
+#    return wrapped
+#
+#@makefontsize("2") #error
+#def hello2():
+#    return "big world"
+
+
+$(document).ready( 
+        def(): 
+            $("#display").append(hello());
+            # $("#display").append("<br/>");
+            # $("#display").append(hello2())
+    ); 

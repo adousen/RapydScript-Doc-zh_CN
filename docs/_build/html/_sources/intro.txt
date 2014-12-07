@@ -41,12 +41,15 @@ RapydScrip使你可以使用Python来编写前端代码，并且不会像其他�
 
 - RapyScript项目中有一些的demo程序，但是我们的社区成员们还编写了许多其它更加不错的例子。比如你要想看下Rapydscript到底能够做些什么事情，下面有一些示例程序：
 
-    * | http://salvatore.pythonanywhere.com/RapydScript
-      | 这里有一些RapydScript项目 examples 目录下的demo程序，同时还有一些其它的示例。
-    * | http://salvatore.pythonanywhere.com/RapydBox
-      | 此处收集了一些非常酷的演示程序，展示了RapydScript与真正的Python是如何的相似，以及RapydScript与其它JavaScript共同工作的能力。RapydScript工作于NodeBox（也是由Python编写）的JavaScript移植版本之上。NodeBox当初从Python移植到JavaScript是为了支持跨平台的兼容性。但没有想到的是，现在使用RapydScript，却可以让原来Python版NodeBox的演示程序在JavaScript版的NodeBox中正常运行，并且一般很少需要修改代码（有时候完全不需要）。 
-    * | http://salvatore.diodev.fr/RapydGlow 
-      | RapydGlow_ 支持使用RapydScript编写对 GlowScript_ 进行调用的程序。GlowScript是我们一个社区成员所创建的项目（需要运行在支持WebGL的浏览器上，比如最新的Chrome和Firefox）。
+    * http://salvatore.pythonanywhere.com/RapydScript
+      
+      这里有一些RapydScript项目 examples 目录下的demo程序，同时还有一些其它的示例。
+    * http://salvatore.pythonanywhere.com/RapydBox
+      
+      此处收集了一些非常酷的演示程序，展示了RapydScript与真正的Python是如何的相似，以及RapydScript与其它JavaScript共同工作的能力。RapydScript工作于NodeBox（也是由Python编写）的JavaScript移植版本之上。NodeBox当初从Python移植到JavaScript是为了支持跨平台的兼容性。但没有想到的是，现在使用RapydScript，却可以让原来Python版NodeBox的演示程序在JavaScript版的NodeBox中正常运行，并且一般很少需要修改代码（有时候完全不需要）。 
+    * http://salvatore.diodev.fr/RapydGlow 
+      
+      RapydGlow_ 支持使用RapydScript编写对 GlowScript_ 进行调用的程序。GlowScript是我们一个社区成员所创建的项目（需要运行在支持WebGL的浏览器上，比如最新的Chrome和Firefox）。
 
 
 链接

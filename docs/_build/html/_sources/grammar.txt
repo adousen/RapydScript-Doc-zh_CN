@@ -102,7 +102,7 @@ RapydScript同样支持列表推导式，使用的语法和Python相同。
 列表的上限
 ``````````````````````
 
-与在Pyhton中一样，RapydScript也有一个 range() 函数。虽然它很强大，但只是看代码的话，会发现它生成的结果并不明显。这有点让人难受，因为要花数秒钟来阅读代码，还要记住它不包含上限，这有损代码的流畅。作为补救，RapydScript从LiveScript中借用了 ``to/til`` 操作符（它也是Ruby中 ``list[../...]`` 分片操作容易阅读的版本）。
+与在Pyhton中一样，RapydScript也有一个 range() 函数。虽然它很强大，但只是看代码的话，会发现它生成的结果并不明显。这有点让人难受，因为要花数秒钟来阅读代码，还要记住它不包含上限，这有损代码的流畅。作为补救，RapydScript从LiveScript中借用了 ``to/til`` 操作符（它也是Ruby中 ``list[../...]`` 分片操作的易读版本）。
 
 比如，下面的4行代码具有相同的作用： ::
 
@@ -251,18 +251,18 @@ while循环
 | 
 | 
 
-收集变长参数 (``def func(*args)``)
+变长参数列表 (``def func(*args)``)
 ```````````````````````````````````````````````
-RapydScript的函数定义支持一种特殊参数定义形式，从而允许用户在调用函数时，向其传递任意数量的参数，这是Python中一种参见的参数魔法。
+RapydScript的函数定义支持采用一种特殊的形式定义函数的参数，从而允许用户在调用函数时，向其传递任意数量的参数，这是Python中一种对个数变化的参数值进行收集的魔法。
 
 虽然与Python一样，JavaScript也允许编写参数个数可变的函数，并有在此之上有自己完整实现逻辑。比如，在JavaScript中利用了这个特性的 Math.max() 、 console.log() 以及 数组的 concat() 方法等。然而，JavaScript并不像Python，它提供的支持并不直观。你必须在函数中使用一个特殊的可迭代元素，叫做 ``arguments``，它具有数组的一些属性但没有支持数组的所有功能。因此，在函数调用中，如果你想要把数组展开为一个参数列表供函数使用，你必须使用 ``.apply`` 方法，而不是用一般的方式调用这个函数。
 
-现在，RapydScript实现了将Python风格的 ``*args`` 方式转换为JavaScript。比如，下面定义的函数接受两个参数a、b，并且把余下的参数包装成一个数组（虽然实际转换的JavaScript代码是用一个数组实现，但不是JavaScript那样用一个蹩脚的 ``arguments`` 对象。）： ::
+现在，RapydScript实现了将Python风格的 ``*args`` 方式转换为JavaScript。比如，下面定义的函数接受两个参数a、b，并且把传递进来的余下参数值包装成一个列表（虽然实际转换的JavaScript代码是用一个数组实现，但不是JavaScript那样用一个蹩脚的 ``arguments`` 对象。）： ::
 
     def doSomething(a, b, *args):
         ...
 
-| **注：** ``*args`` 代表余下参数，它接受任意个数的参数值。比如 doSomething(a, b, c, d)，甚至更多的值。你也可以在别处预先定义一个列表 args_list = (c, d) 或 args_list = [c, d]，然后使用doSomething(a, b, *args_list)的方式调用。
+| **注：** ``*args`` 它表示 args 接收到的是余下任意个数参数值组成的列表。比如 doSomething(a, b, c, d)，甚至更多的值。你也可以在别处预先定义一个列表 args_list = (c, d) 或 args_list = [c, d]，然后使用doSomething(a, b, *args_list)的方式调用。
 | 
 | 虽然，与Python有些不同，RapydScript不是采用元组来打包余下的参数，但对我们的要实现功能没有影响。
 | 
@@ -300,7 +300,7 @@ RapydScript的函数定义支持一种特殊参数定义形式，从而允许用
 
 关键字参数(``**kwargs``)
 ```````````````````````````
-| **注：** 关键字参数 （Keyword Arguments）：是相较于位置参数而言的，它解决了调用函数时，给函数传递的参数时，必须按参数位置传递的问题。可以把它理解为是一种参数传递的方式。位置参数、关键字参数、可选参数、列表解包都是参数传递的方式（此外，“分割”字典RapydScript还不支持，它是Python支持的一种方式）。
+| **注：** 关键字参数 （Keyword Arguments）：是相较于位置参数而言的，它解决了在调用函数时，必须按参数位置传递参数值的问题。位置参数、关键字参数、可选参数、列表解包都是参数传递的方式（此外，Python还有将多余关键字参数传递给 `**kwargs`` 收集的方式，但RapydScript还不支持）。
 | 
 | 因为传递参数时使用了参数的名字，因此关键字参数有时也被称为命名参数。
 | 
@@ -333,7 +333,10 @@ RapydScript所支持的关键字参数与Python不是完全的一致（没有实
         print(kw)   # {foo: 1. bar: 3}
         print(kw["foo"])   # 1
 
-我们没有必要关注于目前关键字收集分配的强制约定，因为只是这样收集起来就结束，还没有实现Python中关键字参数最重要的特性。关键字参数最为重要的用途是可以在传递参数时不用考虑参数的位置，幸运地是，RapydScript有一个 ``kwargs`` 函数修饰符，用于模拟Python中的这种特性。比如： ::
+| **注：** 我们先记住RapydScript有这样的收集约定，不过只是这样收集起来，还不能实现Python中关键字参数最重要的特性。关键字参数最为重要的用途是可以在传递参数时不用考虑参数的位置，
+| 
+
+幸运地是，RapydScript有一个 ``kwargs`` 函数修饰符，可以模仿Python中传递关键字参数时忽略参数实际位置的特性。比如： ::
 
     def test_kwargs(foo, bar, kw):
         print(foo)  # 1
@@ -350,10 +353,229 @@ RapydScript所支持的关键字参数与Python不是完全的一致（没有实
 函数修饰符
 ``````````````````````
 
-``````````````````````
-链式代码块
-``````````````````````
+是的，和Python一样，RapydScript支持函数修饰符，只不过目前函数修饰符还不能接受参数。尽管如此，基本修饰符的功能与在Python中的修饰符是几乎一样的：
+
+| **注：** 从实现上讲，修饰符其实就是一个以函数为参数的函数。并且，在它内部嵌套了一个加入了新的逻辑的函数，并将其返回后用来替代被装饰的原函数。一般为了保证原函数的逻辑被执行，在嵌套的函数中会对原函数进行一次调用。
+| 
+
+:: 
+
+    # 利用函数嵌套定义修饰符
+    def makebold(fn):
+        def wrapped():
+            return "<b>" + fn() + "</b>"
+        return wrapped
+
+    def makeitalic(fn):
+        def wrapped():
+            return "<i>" + fn() + "</i>"
+        return wrapped
+
+    # 使用修饰符   
+    @makebold
+    @makeitalic
+    def hello():
+        return "hello world"
+
+    hello() # returns "<b><i>hello world</i></b>"
+
+| **注：** 函数修饰符是Python中的一种常用的语法。上例中在调用函数hello()时，其实相当于执行了 makebold( makeitalic( hello()) ，这其实是面向对象编程中的装饰器模式的语法支持。
+| 
+| 更多关于Python函数修饰符的知识可以参考 `Python官方文档 <https://docs.python.org/2/whatsnew/2.4.html?highlight=decorator#pep-318-decorators-for-functions-and-methods>`__ ，或者  `有关中文文档 <http://wiki.woodpecker.org.cn/moin/WeiZhong/DecoratorsInPython24>`__ 。
+| 
+| 
+
+
+
 
 其它惯用法
 ------------------------
 
+``````````````````````
+列表的操作
+``````````````````````
+
+RapydScript在许多时候，与许多地方允许你同时使用Python风格和JavaScript风格的方法名。例如，向一个数组追加一个元素，既可以使用 ``push()`` ，也可以使用 ``append()``： ::
+
+    arr = []
+    arr.push(2)
+    arr.append(4)
+    print(arr) # outputs [2,4]
+
+但为了能使用Python风格的方法，你还是需要包含RapydSript的stdlib.js文件。你有两种方式可以采用，一种是将下面的文件添加到html页面中： ::
+
+    <script type="text/javascript" src='stdlib.js'></script>
+
+另一种方式是在RapydScript文件的头部包含下面的一行代码：
+
+.. code-block:: html
+
+    import stdlib
+
+第二种方法的优点是，你不需要手动拷贝stdlib.js库到你JavaScript目录中，它会自动加入代码到RapydScript转换的JavaScript代码中。尽管如此，当你有多个独立编译地RapydScript程序时，第一种方法还是非常有有用的，它可以避免每个文件中都包含相同的stdlib代码。
+
+为了模仿类似python的方法，我将一部分的JavaScript本身的方法做了变化。比如，重写后的array.pop()的工作方式就与Python的pop()（或JavaScript的splice()）相似。 ::
+
+    arr.pop()       # 移除最后一个元素 (JavaScript和Python均有的行为)
+    arr.pop(2)      # 移除第3个元素 (Python中预期的行为, 但JavaScript没有)
+    arr.splice(2,1) # removes third element (JavaScript中有的行为, 但Python没有)
+
+上面最后两行代码还略微有些不同，arr.pop(2)返回的是一个元素，而arr.splice(2,1)返回的是一个只包含一个元素的数组。
+
+````````````````````````````````
+关键字
+````````````````````````````````
+
+RapydScript中的关键字，大多数可以与JavaScript进行互换的： ::
+
+    RapydScript     JavaScript
+
+    None/null       null
+    False/false     false
+    True/true       true
+    undefined       undefined
+    this            this
+
+````````````````````````````````
+操作符
+````````````````````````````````
+
+在RapydScript中不支持JavaScript的操作符，你可以使用它们的Python版本。下面是一个用法对照表：  ::
+
+    RapydScript     JavaScript
+
+    and             &&
+    or              ||
+    not             !
+    is              ===
+    is not          !==
+    +=1             ++
+    -=1             --
+    **              Math.pow()
+
+虽然说， JavaScript中的``===`` 与 在Python中``is``不完全一样。但是，JavaScript在比较两个对象的时是比较奇怪的。
+
+所以，你可能还会需要 ``stdlib`` 中 ``deep_eq`` 这样的函数，它可以对两个对象进行深层次的比较测试，并且在所有的类型上都可以工作，包括哈希表和数组 ::
+
+    deep_eq([1,2,3], [1,[2,3]])     # False
+    deep_eq([[1,2],3], [1,[2,3]])   # False
+    deep_eq([1,[2,3]], [1,[2,3]])   # True
+
+````````````````````````````````
+三元条件表达式
+````````````````````````````````
+
+关于条件表达式话题争论了很长时间。在Python中，如果你想要在行内根据一个条件对变量进行赋值，那么你可以像下面这样写一个条件表达式的的语句： ::
+
+    foo = "bar" if baz else 10
+
+在JavaScript中，下面的代码具有相同的逻辑：
+
+.. code-block:: javascript
+
+    var foo = baz ? "bar" : 10
+
+究竟哪种更加简洁一点，取决于个人的喜好（在大多数的 ``if`` 语句中，我喜欢首先见到的是条件，所以第二种方式对我更有用一点）。不过，第二种方式更胜一筹的地方是处理匿名函数的时候。实际上，Python不需要去处理这种情况，但RapydScirpt有时是需要的。因此，我决定在RapydScript中引入JavaScript的方式，使你可以使用与JavaScript类似的方式分配匿名函数： ::
+
+    foo = baz ? def(): return bar; : def(): return 10
+
+| **注：** 在Python和JavaScript中都有一个有趣的特性：短路逻辑（short-circuit logic）或者惰性求值（lazy evaluation）,它在一系列的布尔表达式中，仅计算最少的表达式来确定整个链的布尔值，从而避免无用地执行代码。三元条件表达式也有这个特性。
+| 
+
+``````````````````````
+链式代码块
+``````````````````````
+如果在使用RapydScript的时候，还需要想办法处理一些JavaScript可以轻松处理的事情，那么RapydScript不会好用的。
+
+JavaScript风格链式操作
+``````````````````````
+
+如果你曾使用过JavaScript或者jQuery，那么你一定见过下面的语法： ::
+
+    function(){
+        // some logic here
+    }.call(this);
+
+这段代码将会在定义之后立即执行，而不是等到将其分配给一个变量。但是，Python是完全不支持这种语法的，最为接近的可能就是： ::
+
+    def tmp():
+        # some logic here
+    tmp.__call__()
+
+虽然这不是那么差劲，但是我们还是在我们的命名空间中引入了一个临时变量。如果我们需要反复地做样的事，这样的方式会比较烦人的。正因如此，RapydScript打算做一些对于Python来说不太正统的事情，它实现了类似JavaScript的解决方案： ::
+
+    def():
+        # some logic here
+    .call(this)
+
+RapydScript 会将任何以``.``开头的语句行与正确缩进的整个代码块进行绑定。这中方式不只仅限与 ``.call()`` 方法，你还可以使用 ``.apply()`` 或者其它可以函数的方法和属性。比如，在jQuery中可以这样使用： ::
+
+    $(element)
+    .css('background-color', 'red')
+    .show()
+
+这中方式中有一个唯一的使用限制，如果你喜欢在链式调用中采用缩进，你仍然可以像下面这样使用 ``\`` 分隔符： ::
+
+    $(element)\
+        .css('background-color', 'red')\
+        .show()
+
+Python风格链式操作
+``````````````````````
+RapydScript实际还支持另一种替代语法，可以实现相同的功能。这种语法适合哪些习惯Python传统的人，它的代码外观是悬挂式缩进的： ::
+
+    def(one, two) and call(this, 1, 2):
+        ...
+
+这段代码与下面的代码是等价的： ::
+
+    def(one, two):
+        ...
+    .call(this, 1, 2)
+
+也许有的人喜欢这个特性，而有的人则不会喜欢。RapydScript的目标总是希望让其独有的特性与普通的Python相比不会太过太突兀。从而使得假如你不认同RapydScript的这种特性，完全可以不使用它。
+
+while循环的增强特性
+``````````````````````
+最近，do/while循环也增强了类似的链式操作特性： ::
+
+    a = 0
+    do:
+        print(a)
+        a += 1
+    .while a < 1
+
+在我看来，Python其实也可以吸收一下这种语法的好处。与函数一样，你也可以使用悬挂缩进的形式： ::
+    
+    a = 0
+    do and while a < 1:
+        print(a)
+        a += 1
+
+````````````````````````````````
+输出语句print()
+````````````````````````````````
+最后，我们要介绍的就是 ``print()`` 与 ``console.log()`` 的差别。 ``print()`` 方法定义在RapydScript的stdlib库中，被设计用来模仿Python中的Print语句。 ``console.log()`` 是JavaScript版本的debug输出方法，它更加强大。但是如果只是想要快速输出，它则显得有点不方便。下面是一个例子： ::
+
+    arr = [1,2,3,4]
+    print(arr)          # [1,2,3,4]
+    console.log(arr)    # [1,2,3,4]
+
+    arr2 = [[1,2],[3,4]]
+    print(arr2)         # [[1,2],[3,4]]
+    console.log(arr2)   # [Array[2], Array[2]]
+
+    hash = {'dogs': 1, 'cats': 2}
+    print(hash)         # {"dogs":1,"cats":2}
+    console.log(hash)   # Object
+
+
+嵌入JS代码
+------------------
+
+在少数情况下，RapydScript可能没有办法让你做想做的事，那么此时你可以使用纯JavaScript代码。
+
+这种情况下，你可以将JavaScript代码包括在一个字符串中，并且传递给 JS() 方法。不过，JS()方法并不是一个沙箱，其中的代码可以与普通的RapydScript代码进行交互： ::
+
+    JS('a = {foo: "bar", baz: 1};')
+    print(a.foo)    # prints "bar"

@@ -43,11 +43,14 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-logo">
+        <a href="#"><img class="logo" src="_static/rs_logo_tiny_med.png"></a>
+        <a class="title" href="index.html"> RapydScript</a>
+      </div>
       <div class="wy-side-nav-search">
-        <a href="index.html" class="fa fa-home"> RapydScript</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="搜索..." />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -77,10 +80,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="grammar.html">基本语法</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="grammar.html#id3">元组</a></li>
-<li class="toctree-l2"><a class="reference internal" href="grammar.html#id5">序列</a></li>
-<li class="toctree-l2"><a class="reference internal" href="grammar.html#id8">循环</a></li>
-<li class="toctree-l2"><a class="reference internal" href="grammar.html#id9">函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#tuple">元组 (tuple)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#list">列表 (List)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#id6">循环</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#id7">函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#id17">其它惯用法</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="class.html">类</a><ul>
@@ -90,9 +94,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">模块</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id3">编写模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块编写</a></li>
 <li class="toctree-l2"><a class="reference internal" href="module.html#id4">模块导入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id5">可以使用的标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id5">可用的标准库</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="scope.html">作用域控制</a><ul>
@@ -112,6 +116,9 @@
         
       </div>
       &nbsp;
+      <div class="wy-side-author">
+        rapydscript.cn
+      </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -178,20 +185,14 @@
 <li><p class="first">RapyScript项目中有一些的demo程序，但是我们的社区成员们还编写了许多其它更加不错的例子。比如你要想看下Rapydscript到底能够做些什么事情，下面有一些示例程序：</p>
 <blockquote>
 <div><ul>
-<li><div class="first line-block">
-<div class="line"><a class="reference external" href="http://salvatore.pythonanywhere.com/RapydScript">http://salvatore.pythonanywhere.com/RapydScript</a></div>
-<div class="line">这里有一些RapydScript项目 examples 目录下的demo程序，同时还有一些其它的示例。</div>
-</div>
+<li><p class="first"><a class="reference external" href="http://salvatore.pythonanywhere.com/RapydScript">http://salvatore.pythonanywhere.com/RapydScript</a></p>
+<p>这里有一些RapydScript项目 examples 目录下的demo程序，同时还有一些其它的示例。</p>
 </li>
-<li><div class="first line-block">
-<div class="line"><a class="reference external" href="http://salvatore.pythonanywhere.com/RapydBox">http://salvatore.pythonanywhere.com/RapydBox</a></div>
-<div class="line">此处收集了一些非常酷的演示程序，展示了RapydScript与真正的Python是如何的相似，以及RapydScript与其它JavaScript共同工作的能力。RapydScript工作于NodeBox（也是由Python编写）的JavaScript移植版本之上。NodeBox当初从Python移植到JavaScript是为了支持跨平台的兼容性。但没有想到的是，现在使用RapydScript，却可以让原来Python版NodeBox的演示程序在JavaScript版的NodeBox中正常运行，并且一般很少需要修改代码（有时候完全不需要）。</div>
-</div>
+<li><p class="first"><a class="reference external" href="http://salvatore.pythonanywhere.com/RapydBox">http://salvatore.pythonanywhere.com/RapydBox</a></p>
+<p>此处收集了一些非常酷的演示程序，展示了RapydScript与真正的Python是如何的相似，以及RapydScript与其它JavaScript共同工作的能力。RapydScript工作于NodeBox（也是由Python编写）的JavaScript移植版本之上。NodeBox当初从Python移植到JavaScript是为了支持跨平台的兼容性。但没有想到的是，现在使用RapydScript，却可以让原来Python版NodeBox的演示程序在JavaScript版的NodeBox中正常运行，并且一般很少需要修改代码（有时候完全不需要）。</p>
 </li>
-<li><div class="first line-block">
-<div class="line"><a class="reference external" href="http://salvatore.diodev.fr/RapydGlow">http://salvatore.diodev.fr/RapydGlow</a></div>
-<div class="line"><a class="reference external" href="https://github.com/artyprog/RapydGlow">RapydGlow</a> 支持使用RapydScript编写对 <a class="reference external" href="http://www.glowscript.org/">GlowScript</a> 进行调用的程序。GlowScript是我们一个社区成员所创建的项目（需要运行在支持WebGL的浏览器上，比如最新的Chrome和Firefox）。</div>
-</div>
+<li><p class="first"><a class="reference external" href="http://salvatore.diodev.fr/RapydGlow">http://salvatore.diodev.fr/RapydGlow</a></p>
+<p><a class="reference external" href="https://github.com/artyprog/RapydGlow">RapydGlow</a> 支持使用RapydScript编写对 <a class="reference external" href="http://www.glowscript.org/">GlowScript</a> 进行调用的程序。GlowScript是我们一个社区成员所创建的项目（需要运行在支持WebGL的浏览器上，比如最新的Chrome和Firefox）。</p>
 </li>
 </ul>
 </div></blockquote>

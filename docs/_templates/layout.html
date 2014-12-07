@@ -81,8 +81,11 @@
 
     {# SIDE NAV, TOGGLES ON MOBILE #}
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-logo">
+        <a href="#"><img class="logo" src="{{pathto('_static/'+ 'rs_logo_tiny_med.png', 1)}}"></a>
+        <a class="title" href="{{ pathto(master_doc) }}"> {{ project }}</a>
+      </div>
       <div class="wy-side-nav-search">
-        <a href="{{ pathto(master_doc) }}" class="fa fa-home"> {{ project }}</a>
         {% include "searchbox.html" %}
       </div>
 
@@ -96,6 +99,9 @@
         {% endif %}
       </div>
       &nbsp;
+      <div class="wy-side-author">
+        rapydscript.cn
+      </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
