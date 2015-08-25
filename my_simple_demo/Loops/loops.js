@@ -1,9 +1,13 @@
 (function(){
+    "use strict";
+    var _$rapyd$_Temp;
     function _$rapyd$_print() {
-        var args, output;
-        args = [].slice.call(arguments, 0);
+        var args = [].slice.call(arguments, 0);
+        var output;
         output = JSON.stringify(args);
-        if ("console" in window) console.log(output.substr(1, output.length-2));
+        if (typeof console === "object") {
+            console.log(output.substr(1, output.length - 2));
+        }
     }
     var newDom, a;
     a = 0;

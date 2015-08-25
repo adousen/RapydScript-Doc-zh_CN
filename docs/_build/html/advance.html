@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>高级话题 &mdash; RapydScript 1.0 文档</title>
+  <meta name="description" content="使用Python编写JavaScript代码;将Python代码转换成JavaScript">
+  <meta name="keywords" content="JavaScript, RapydScript, Python, Coffescript, Complier, Web">
   
 
   
@@ -29,6 +31,7 @@
 
   
     <link rel="top" title="RapydScript 1.0 文档" href="index.html"/>
+        <link rel="next" title="编程琐事" href="quriks.html"/>
         <link rel="prev" title="异常处理" href="except.html"/> 
 
   
@@ -84,30 +87,40 @@
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id6">循环</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id7">函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id17">其它惯用法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#js">嵌入JS代码</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="class.html">类</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript 中的类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="class.html#id3">外部类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="class.html#id4">方法绑定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript的类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id7">外部类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id8">方法与对象的绑定</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="module.html">模块</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块编写</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id4">模块导入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id5">可用的标准库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">模块和库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id6">代码库</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="scope.html">作用域控制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scope.html#todo">todo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">变量的作用域</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#id3">局部和全局作用域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#globalnonlocal">global和nonlocal</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="except.html">异常处理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="except.html#todo">todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except">try/except</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id3">捕获特定异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id4">自定义的异常类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except-finally">try/except/finally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id7">抛出异常</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">高级话题</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id3">简单的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">浏览器兼容性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">编码惯例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quriks.html">编程琐事</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quriks.html#id3">注意事项</a></li>
 </ul>
 </li>
 </ul>
@@ -139,7 +152,7 @@
     <li>高级话题</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/advance.txt" rel="nofollow"> View page source</a>
+          <a href="https://github.com/adousen/RapydScript-Doc-zh_CN" rel="nofollow"> View source on github</a>
         
       </li>
   </ul>
@@ -148,19 +161,97 @@
           <div role="main">
             
   <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id4">高级话题</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><a class="toc-backref" href="#id8">高级话题</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="contents topic" id="id2">
 <p class="topic-title first">目录</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id4">高级话题</a><ul>
-<li><a class="reference internal" href="#id3" id="id5">简单的例子</a></li>
+<li><a class="reference internal" href="#id1" id="id8">高级话题</a><ul>
+<li><a class="reference internal" href="#id3" id="id9">浏览器兼容性</a></li>
+<li><a class="reference internal" href="#id4" id="id10">编码惯例</a><ul>
+<li><a class="reference internal" href="#tab" id="id11">Tab与空格</a></li>
+<li><a class="reference internal" href="#objecthashe-dict" id="id12">object的写法与Hashe/Dict</a></li>
+<li><a class="reference internal" href="#id5" id="id13">分号</a></li>
+<li><a class="reference internal" href="#jquery" id="id14">jQuery的元素</a></li>
+<li><a class="reference internal" href="#id6" id="id15">库</a></li>
+<li><a class="reference internal" href="#id7" id="id16">外部的库或类</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 <hr class="docutils" />
+<p>对用RapydScript编写大型项目的开发者来说,本节包含多个你感兴趣的话题。但是对刚刚接触RapydScript的开发者就不是那么有关。本节关注的主题有使代码保持整洁、优化的编码惯例，介绍RapydScript之外的库，以及关于自已编写库的建议。</p>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id5">简单的例子</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">浏览器兼容性</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>默认地，RapydScript编译的代码能够在支持HTML5以及较老的IE6-8等浏览器上运行。为此，编译器有时会生成一些相当混乱和低效的代码。根据2013年9月的统计，世界上少于8%的电脑正在使用IE8。如果你知晓你的用户不会使用老版本的浏览器，那么在执行编译的时候你可以添加 <cite>&#8211;screw-ie8</cite> 选项以生成更简洁、速度更快的代码。</p>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id10">编码惯例</a><a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>不难看出，RapydScript是一门比JavaScript更简洁的语言。尽管如此，与所有的动态类型语言一样（包括Python），如果你不遵循一些编码惯例，那么你很容易搬迁石头砸中自己的脚。当然，之所以称其为惯例，是因为如果你已经有自己的一套编码习惯，或者其中有些你并不认同，那么你完全可以不这样做。</p>
+<div class="section" id="tab">
+<h3><a class="toc-backref" href="#id11">Tab与空格</a><a class="headerlink" href="#tab" title="永久链接至标题">¶</a></h3>
+<p>这看起来似乎有些矛盾，Python的编码惯例是使用4个空格进行缩进，但是大部分打包的RapydScript源代码却是使用的一个tab缩进。这是由于旧版本的RapydScript依赖的是tab，但为了保持与Python和JavaScript社区习惯一致，新版本的RapydScript开始使用空格。喜欢使用那种方式，根据你的习惯吧。但是，如果你打算向RapydScript提供代码，为与库中的其余代码保持一致，那么你必须使用空格。</p>
+</div>
+<div class="section" id="objecthashe-dict">
+<h3><a class="toc-backref" href="#id12">object的写法与Hashe/Dict</a><a class="headerlink" href="#objecthashe-dict" title="永久链接至标题">¶</a></h3>
+<p>在JavaScript中，将对象的写法与哈希表是一样的，因此将它们看作是相同的东西，但我并不喜欢这种方式。你可以看一下Google的Closure 编译器（JavaScript的代码压缩和优化工具）在设置ADVANACED_OPTIMIZATIONS选项时因此出现的一些问题，它实际上会破坏大量看似良好的JavaScript代码。主要问题是这些代码试图在同一位置重命名方法或变量。我的建议就是一定要将对象和哈希表的写法严格区分开来，最基本的就是关键字的引号。这么做的额外好处就是，你的代码有机会更好地通过Closure编译器。</p>
+<p>下面有一个例子：</p>
+<div class="highlight-python"><div class="highlight"><pre>obj = {
+    foo:    1,
+    bar:    def(): print(&#39;bar&#39; + str(foo))
+}
+hash = {
+    &#39;foo&#39;:  1,
+    &#39;bar&#39;:  def(): print(&#39;bar&#39; + str(foo))
+}
+
+obj.bar()       # good
+obj[&#39;bar&#39;]()    # bad
+
+hash.bar()      # bad
+hash[&#39;bar&#39;]()   # good
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id13">分号</a><a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>绝不要滥用分号。它的意义在于提供一个方法将逻辑相关代码放在一起，而不是将整个web应用写在一行。下面是个不错的示例：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">X</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">Y</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>尽管如此，任何需要使用两个以上分号或者包含一长串数学计算的代码都最好写成多行。虽然决定权在你手中，但是如果代码的逻辑要求放在多行才能更好地读懂，那么你最好还是不要使用分号。下面例子中的斐波那契函数算是展示了如何最大限度的使用分号：</p>
+<div class="highlight-python"><div class="highlight"><pre>fib = def(x): if x&lt;=1: return 1; return fib(x-1)+fib(x-2)
+</pre></div>
+</div>
+<p>即便如此，对这个例子而言，我个人还是建议写成多行代码。</p>
+</div>
+<div class="section" id="jquery">
+<h3><a class="toc-backref" href="#id14">jQuery的元素</a><a class="headerlink" href="#jquery" title="永久链接至标题">¶</a></h3>
+<p>如果你在程序中使用了jQuery，那么你应该多次将其保存在变量中。如果你写过大一点的程序，那么你一定曾经将空元素和封装元素搞错过。特别是对于 <cite>canvas</cite> 这样的对象，你常需要直接读取属性和方法。我的解决方法很简单，就是在封装的元素的变量名前面加上前缀 <cite>$</cite> ：</p>
+<div class="highlight-python"><div class="highlight"><pre>$canvas = $(&#39;&lt;canvas&gt;&lt;/canvas&gt;&#39;)
+canvas = $canvas.get(0)
+ctx = canvas.getContext(&#39;2d&#39;)
+$canvas.appendTo(document)
+</pre></div>
+</div>
+<p>把这种方式用在函数的定义中特别不错，因此你可以仅查看函数的签名就能立刻知道需要给变量传递的对象类型。</p>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id15">库</a><a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>我建议开发者还是尽可能地使用原生JavaScript代码编写的库，而不是使用 <cite>math.pyj</cite> 和 <cite>re.pyj</cite> 。尽管这些库对Python的模仿不存在问题，并且也工作良好，但是却会给你的程序带来不必要的开销。此外，我认为Python中的 <cite>re</cite> 库显得有些复杂，而JavaScript的 <cite>RegExp</cite> 与之相比就要简单得多。虽然那么说，但如果试图将Python中的一些大型项目移植到web端，那么这些库还是显得极为有用。但是如果你正在编写完全新的代码，如果你决定采用JavaScript库（比如 <cite>Math</cite> 和 <cite>RegExp</cite> ）替代的话将可能会更加容易维护。</p>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id16">外部的库或类</a><a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>RapydScript可以取得任何你编写的或者用原生JavaScript编写的类。但是，它不能取得外部框架代码中的类。解决办法有两种，一种是使用 <cite>&#64;external</cite> 装饰器，另一种是在对象声明时使用 <cite>new</cite> 操作符。为保持代码的易读和贯通，有很多理由使得我强烈偏向于使用 <cite>&#64;external</cite> 装饰器，尽管有些繁琐：</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>&#64;external</cite> 装饰器使任何阅读你代码的人都可以清晰地看到类的声明</li>
+<li>使用了 <cite>&#64;external</cite> 声明的类能够导入到其他模块进行复用</li>
+<li>比起忘记使用import，开发者更容易忘记在声明对象时对单个实例使用 <cite>new</cite> 操作符，这是因为忘记使用 <cite>new</cite> 操作符更不容易通过debug发现。</li>
+</ul>
+</div></blockquote>
+</div>
 </div>
 </div>
 
@@ -169,6 +260,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="quriks.html" class="btn btn-neutral float-right" title="编程琐事"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="except.html" class="btn btn-neutral" title="异常处理"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -180,7 +273,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2014, adousen.
+        &copy; 版权所有 2015, adousen.
     </p>
   </div>
 

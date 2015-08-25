@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>安装与使用 &mdash; RapydScript 1.0 文档</title>
+  <meta name="description" content="使用Python编写JavaScript代码;将Python代码转换成JavaScript">
+  <meta name="keywords" content="JavaScript, RapydScript, Python, Coffescript, Complier, Web">
   
 
   
@@ -85,30 +87,40 @@
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id6">循环</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id7">函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id17">其它惯用法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#js">嵌入JS代码</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="class.html">类</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript 中的类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="class.html#id3">外部类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="class.html#id4">方法绑定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript的类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id7">外部类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id8">方法与对象的绑定</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="module.html">模块</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块编写</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id4">模块导入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id5">可用的标准库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">模块和库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id6">代码库</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="scope.html">作用域控制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scope.html#todo">todo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">变量的作用域</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#id3">局部和全局作用域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#globalnonlocal">global和nonlocal</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="except.html">异常处理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="except.html#todo">todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except">try/except</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id3">捕获特定异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id4">自定义的异常类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except-finally">try/except/finally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id7">抛出异常</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="advance.html">高级话题</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">简单的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">浏览器兼容性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id4">编码惯例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quriks.html">编程琐事</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quriks.html#id3">注意事项</a></li>
 </ul>
 </li>
 </ul>
@@ -140,7 +152,7 @@
     <li>安装与使用</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/install.txt" rel="nofollow"> View page source</a>
+          <a href="https://github.com/adousen/RapydScript-Doc-zh_CN" rel="nofollow"> View source on github</a>
         
       </li>
   </ul>
@@ -258,7 +270,7 @@ npm link .
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2014, adousen.
+        &copy; 版权所有 2015, adousen.
     </p>
   </div>
 

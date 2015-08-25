@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>类 &mdash; RapydScript 1.0 文档</title>
+  <meta name="description" content="使用Python编写JavaScript代码;将Python代码转换成JavaScript">
+  <meta name="keywords" content="JavaScript, RapydScript, Python, Coffescript, Complier, Web">
   
 
   
@@ -29,7 +31,7 @@
 
   
     <link rel="top" title="RapydScript 1.0 文档" href="index.html"/>
-        <link rel="next" title="模块" href="module.html"/>
+        <link rel="next" title="模块和库" href="module.html"/>
         <link rel="prev" title="基本语法" href="grammar.html"/> 
 
   
@@ -85,30 +87,40 @@
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id6">循环</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id7">函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id17">其它惯用法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#js">嵌入JS代码</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">类</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#rapydscript">RapydScript 中的类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">外部类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">方法绑定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rapydscript">RapydScript的类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">外部类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">方法与对象的绑定</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="module.html">模块</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块编写</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id4">模块导入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id5">可用的标准库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">模块和库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id6">代码库</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="scope.html">作用域控制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scope.html#todo">todo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">变量的作用域</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#id3">局部和全局作用域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#globalnonlocal">global和nonlocal</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="except.html">异常处理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="except.html#todo">todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except">try/except</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id3">捕获特定异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id4">自定义的异常类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except-finally">try/except/finally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id7">抛出异常</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="advance.html">高级话题</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">简单的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">浏览器兼容性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id4">编码惯例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quriks.html">编程琐事</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quriks.html#id3">注意事项</a></li>
 </ul>
 </li>
 </ul>
@@ -140,7 +152,7 @@
     <li>类</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/class.txt" rel="nofollow"> View page source</a>
+          <a href="https://github.com/adousen/RapydScript-Doc-zh_CN" rel="nofollow"> View source on github</a>
         
       </li>
   </ul>
@@ -149,27 +161,267 @@
           <div role="main">
             
   <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id5">类</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><a class="toc-backref" href="#id13">类</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="contents topic" id="id2">
 <p class="topic-title first">目录</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id5">类</a><ul>
-<li><a class="reference internal" href="#rapydscript" id="id6">RapydScript 中的类</a></li>
-<li><a class="reference internal" href="#id3" id="id7">外部类</a></li>
-<li><a class="reference internal" href="#id4" id="id8">方法绑定</a></li>
+<li><a class="reference internal" href="#id1" id="id13">类</a><ul>
+<li><a class="reference internal" href="#rapydscript" id="id14">RapydScript的类</a><ul>
+<li><a class="reference internal" href="#id3" id="id15">类的定义</a></li>
+<li><a class="reference internal" href="#id4" id="id16">创建类的实例</a></li>
+<li><a class="reference internal" href="#id5" id="id17">类的继承</a></li>
+<li><a class="reference internal" href="#self" id="id18">绑定参数self</a></li>
+<li><a class="reference internal" href="#id6" id="id19">静态方法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7" id="id20">外部类</a></li>
+<li><a class="reference internal" href="#id8" id="id21">方法与对象的绑定</a><ul>
+<li><a class="reference internal" href="#bind" id="id22">bind()</a></li>
+<li><a class="reference internal" href="#rebind" id="id23">rebind()</a></li>
+<li><a class="reference internal" href="#auto-bind" id="id24">&#8211;auto-bind 标志</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 <hr class="docutils" />
 <div class="section" id="rapydscript">
-<h2><a class="toc-backref" href="#id6">RapydScript 中的类</a><a class="headerlink" href="#rapydscript" title="永久链接至标题">¶</a></h2>
-</div>
+<h2><a class="toc-backref" href="#id14">RapydScript的类</a><a class="headerlink" href="#rapydscript" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id7">外部类</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h3><a class="toc-backref" href="#id15">类的定义</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>这是RapdyScript真正精彩的部分。众所周知，JavaScript中类的实现相当地不方便。实际上，它是在普通函数基础上进行hack。有经验的用户都建议使用外部库来创建，而不是使用纯JavaScript。然而，RapydScript实现了真正的类的定义方式。</p>
+<p>假设我们要需要一个特殊的文字输入框控件，它接受用户输入描述颜色的字符串，并相应地修改输入框的背景颜色。我们可以用下面的方式来创建：</p>
+<div class="highlight-python"><div class="highlight"><pre>class ColorfulTextField:
+    def __init__(self):
+        field = $(&#39;&lt;input&gt;&lt;/input&gt;&#39;)
+        changeColor = def(event):
+            field.css(&#39;background&#39;, field.val())
+        field.blur(changeColor)
+
+        self.widget = field
+</pre></div>
+</div>
+<p>这个类中DOM的行为可能不是太严密，当输入不合法的颜色时，输入框的背景会被设为最开始的颜色。虽然，增加一个错误检查逻辑可以解决，但现在我们还是先不要考虑。</p>
 </div>
 <div class="section" id="id4">
-<h2><a class="toc-backref" href="#id8">方法绑定</a><a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h3><a class="toc-backref" href="#id16">创建类的实例</a><a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>可以用下面的代码将该字段添加到页面中：</p>
+<div class="highlight-python"><div class="highlight"><pre>textfield = ColorfulTextField()
+$(&#39;body&#39;).append(textfield.widget)
+</pre></div>
+</div>
+<p>如果你习惯了JavaScript，在你的脑海中上面的代码会引发许多红色警告。因为，在纯JavaScript代码中，你必须使用 <tt class="docutils literal"><span class="pre">new</span></tt> 来创建对象。但是你不用担心，RapydScript编译器会将上面的代码编译成正确的JavaScript代码：</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">textfield</span><span class="p">;</span>
+<span class="nx">textfield</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ColorfulTextField</span><span class="p">()</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">textfield</span><span class="p">.</span><span class="nx">widget</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>RapydScript会假设你使用类来创建对象时，因此会自动在编译后的代码中加入 &#8216;new&#8217; 关键字。此外，在列表中或返回值中，你也可以轻松地创建对象，比如：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">ColorfulTextField</span><span class="p">(),</span> <span class="n">ColorfulTextField</span><span class="p">(),</span> <span class="n">ColorfulTextField</span><span class="p">()]</span>
+</pre></div>
+</div>
+<p>过去当你忘记使用关键时，会导致创建出&#8217;undefined&#8217;对象。因此，RapydSCript中类的定义方式有一个极大的好处是它可以帮你避免。还有一点需要指出，常规的DOM/JavaScript对象也可以采用这样的方式创建，比如你不需要使用new关键字来创建DOM中的image元素:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">myImage</span> <span class="o">=</span> <span class="n">Image</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id17">类的继承</a><a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>RapydScript中类的能力并仅不限于此，与Python一样，RapydScript支持类的继承。
+假设我们需要实现一个与上面的字段工作方式相似的新字段。它不仅根据字段改变背景的颜色，而且通过一个ID为&#8221;target&#8221;的按钮来实现，这个按钮被放在字段右边。没有问题，我们可以这样：</p>
+<div class="highlight-python"><div class="highlight"><pre>class TextFieldAffectingOthers(ColorfulTextField):
+    def __init__(self):
+        ColorfulTextField.__init__(self)
+        field = self.widget
+        submit = $(&#39;&lt;button type=&quot;button&quot;&gt;apply&lt;/button&gt;&#39;)
+        applyColor = def(event):
+            $(&#39;#target&#39;).css(&#39;background&#39;, field.val())
+        submit.click(applyColor)
+        self.widget = $(&#39;&lt;div&gt;&lt;/div&gt;&#39;)\
+            .append(field)\
+            .append(submit)
+</pre></div>
+</div>
+<p>有一些东西需要说一下。我们可以像在Python中一样，使用 <tt class="docutils literal"><span class="pre">Parent.method(self,</span> <span class="pre">...)</span></tt> 这样的语法来调用父类中的方法。并且，我们也可以通过一些参数来确定执行调用父类中哪个方法。另外，注意上面的代码中使用 操作符来打断代码行，这也是Python中保持代码行短小和易读的方法。在RapydScript中同样得到支持，但是要求保持缩进。</p>
+<p>Python 和 RapydScript 的类之间有一个重要的差别，RapydScript不支持多重继承。可能会觉得这是一个大问题，但实际上几乎不会带来麻烦。当使用多重继承的时候，我们一般关心的仅仅是类中的少数一些方法。并且，通过JavaScript中的原型继承，RapydScript允许我们即使不通过继承，也可以复用其他类中的方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Something</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+        <span class="n">Parent</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
+        <span class="n">SomethingElse</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
+        <span class="n">SomethingElse</span><span class="o">.</span><span class="n">anotherMethod</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>注意，Something 类没有 <tt class="docutils literal"><span class="pre">__init__</span></tt> 方法。与Python一样，该方法的定义是可选的。如果你没有定义，RapydScript会自动创建一个空的构造函数（或者在继承的类中，使用父类的构造函数）。此外注意，我们没有从 SomethingElse 类继承，但是我们却同样可以调用其方法。这也引出了下面的一点，从其他类继承的真正好处是可以自动从父类拷贝一些方法。当然，我们也会关心 <cite>isinstance()</cite> 方法(用在需要与非主要的父类有关的工作上)，它与JavaScript的 <cite>instanceof()</cite> 操作等价。</p>
+<div class="line-block">
+<div class="line"><strong>注：</strong> 如果你编译时没有使用 <tt class="docutils literal"><span class="pre">--screw-ie8</span></tt> 标志，那么某个父类的构造函数会在每次创建子类的时候都执行一次。在大多数情况下，这并不会影响到你，但在某些情况下你会看到一些奇怪的副作用。例如，如果父类构造函数中有一个 <tt class="docutils literal"><span class="pre">print()</span></tt> 语句，这会导致你尽管一个实例都没有创建，但在执行到每个子类定义地方都会打印出一些内容。 <tt class="docutils literal"><span class="pre">--screw-ie8</span></tt> 选项通过增加 Internet Explorer 6-8 的兼容代码，修正了这个问题。</div>
+<div class="line"><br /></div>
+</div>
+<p>不过，RapydScript中有一个叫 <tt class="docutils literal"><span class="pre">mixin</span></tt> 的方法，它可以让你非常方便地将指定类的方法分配给其他的类，这与Python的多重继承有几分相似。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">mixin</span><span class="p">(</span><span class="n">Snake</span><span class="p">,</span> <span class="n">Animal</span><span class="p">,</span> <span class="n">false</span><span class="p">)</span>     <span class="c"># 将Animal类中方法添加进Snake类中，但不会重写Snake类中已定义的方法</span>
+<span class="n">mixin</span><span class="p">(</span><span class="n">Snake</span><span class="p">,</span> <span class="n">Animal</span><span class="p">,</span> <span class="n">true</span><span class="p">)</span>      <span class="c">#将Animal类中方法添加进Snake类中，并重写Snake类中已定义的方法</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="self">
+<h3><a class="toc-backref" href="#id18">绑定参数self</a><a class="headerlink" href="#self" title="永久链接至标题">¶</a></h3>
+<p>对RapydScript的类的总结就是，它可以按Python类的方式工作，但还有一些独特之处。比如，下面等价的两段代码：</p>
+<div class="highlight-python"><div class="highlight"><pre>class Aclass:
+    def __init__(self):
+        pass
+
+    def method(self):
+        doSomething(self)
+
+class Aclass:
+    def __init__(self):
+        self.method = def():
+            doSomething(self)
+</pre></div>
+</div>
+<p>上面例子中的变量 <tt class="docutils literal"><span class="pre">self</span></tt> 并不是关键字，与在Python中相同，这个变量可以是任何的名字。因为在Python中，类中普通函数的第一个变量始终与类本身绑定在一起，这与JavaScript习惯使用 <tt class="docutils literal"><span class="pre">this</span></tt> 关键字不同。</p>
+<p>不过，RapydScript 仍然支持 <cite>this</cite> 关键字，用法与在JavaScript中一样。比如：</p>
+<dl class="docutils">
+<dt>class Main:</dt>
+<dd><dl class="first last docutils">
+<dt>def __init__(s):</dt>
+<dd><p class="first">main = this
+method = def():</p>
+<blockquote>
+<div>main.doSomething()</div></blockquote>
+<p class="last">$(&#8216;#element&#8217;).click(method)</p>
+</dd>
+<dt>def doSomething(s):</dt>
+<dd>...</dd>
+</dl>
+</dd>
+</dl>
+<p>或者，用下面Pythonic的写法，利用第一参数的绑定特性，可以将上面的代码简化：</p>
+<div class="highlight-python"><div class="highlight"><pre>class Main:
+    def __init__(s):
+        method = def():
+            s.doSomething()
+        $(&#39;#element&#39;).click(method)
+
+    def doSomething(s):
+        ...
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id19">静态方法</a><a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>RapydScript支持Python中的静态方法。给类方法加上 <tt class="docutils literal"><span class="pre">&#64;staticmethod</span></tt> 装饰器，则该方法在编译时不会绑定到类对象的实例中，并且还保证对该方法的只允许使用静态方式调用。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Test</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">normalMethod</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">staticMethod</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>所以，一些JavaScript的原生类的方法，比如 <tt class="docutils literal"><span class="pre">String.fromCharCode()</span></tt> 可以被看作是为方便开发者的静态方法。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id20">外部类</a><a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>在同一个作用域，RapydScript会内自动地检测类的定义（只要满足其定义在被使用之前），以及在某个内部模块中定义的类（如果要使用某个模块中的类，则这个模块必须的明确引入）。</p>
+<p>RapydScript会自动检查出使用了JavaScript的原生类的情况（比如String, Array, Date）,但遗憾的是，RapydScript没有办法检查出你使用的是到第三方库中的类。在这种情况下，你每次创建一个外部类的实例时，可能就得使用 <tt class="docutils literal"><span class="pre">new</span></tt> 关键字了。不过，RapydScript提供了使用 <tt class="docutils literal"><span class="pre">external</span></tt> 的替代方案。</p>
+<p>将一个类标记为外部类的方法是使用 <tt class="docutils literal"><span class="pre">external</span></tt> 装饰器。你不需要在类中写具体的代码，只需要简单的 <tt class="docutils literal"><span class="pre">pass</span></tt> 语句即可：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@external</span>
+<span class="k">class</span> <span class="nc">Alpha</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>现在,无论Alpha是否定义在当前的域中，RapydScript都会将其当作类对待，在需要 <tt class="docutils literal"><span class="pre">new</span></tt> 关键字地方自动地添加，并且由 <tt class="docutils literal"><span class="pre">prototype</span></tt> 访问类的方法（可以在下一节的 <tt class="docutils literal"><span class="pre">casperjs</span></tt> 例子中看到实际使用是怎么样的）。</dt>
+<dd><p class="first">除非需要指定某个方法为静态的，类中的方法一般不需要预先声明（即使声明也无非是作为个人参考，编译器会完全忽略这些内容）。</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="nd">@external</span>
+<span class="k">class</span> <span class="nc">Alpha</span><span class="p">:</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">one</span><span class="p">():</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>现在 <cite>Alpha.one</cite> 是静态方法，但其它 <cite>Alpha</cite> 上的方法仍被作为普通方法来调用。</p>
+<p>你可以在当前域的 <tt class="docutils literal"><span class="pre">Alpha</span></tt> 类中预先声明打算使用的其它方法，这不是强制的，它只是使得你的代码可以容易被其他开发者阅读。从某种层面上说，这种的 <cite>external</cite> 声明方式相当于 <cite>Alpha</cite> 的目录表。看下面的代码：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@external</span>
+<span class="k">class</span> <span class="nc">Alpha</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">two</span><span class="p">():</span> <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">three</span><span class="p">():</span> <span class="k">pass</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">one</span><span class="p">():</span> <span class="k">pass</span>
+</pre></div>
+</div>
+<p>正如上面提到的，这种方式只是使得你的代码容易阅读。编译器本身会忽略到除使用 <tt class="docutils literal"><span class="pre">staticmethod</span></tt> 装饰器以外的所有方法的声明。</p>
+<p>你还可以使用 <tt class="docutils literal"><span class="pre">external</span></tt> 装饰器来忽略掉未被正确导入的RapydScript模块。但是，如果这些模块在你的管控之下，那么更好的方案还是去修正这些导入。</p>
+</div>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id21">方法与对象的绑定</a><a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>默认情况下，RapydScript不会将方法与其定义所在的类对象绑定起来。这种行为与Python有所不同，但与JavaScript是相同的。例如，看看下面的代码：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Boy</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;My name is&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="n">tod</span> <span class="o">=</span> <span class="n">Boy</span><span class="p">(</span><span class="s">&#39;Tod&#39;</span><span class="p">)</span>
+<span class="n">tod</span><span class="o">.</span><span class="n">greet</span><span class="p">()</span>                 <span class="c"># Hello, my name is Tod</span>
+<span class="nb">getattr</span><span class="p">(</span><span class="n">tod</span><span class="p">,</span> <span class="s">&#39;greet&#39;</span><span class="p">)()</span>     <span class="c"># Hello, my name is undefined</span>
+</pre></div>
+</div>
+<div class="section" id="bind">
+<h3><a class="toc-backref" href="#id22">bind()</a><a class="headerlink" href="#bind" title="永久链接至标题">¶</a></h3>
+<p>尽管默认情况是上面这样，但是有的时候，有可能还是希望保持方法与所在对象的绑定。为此，RapydScript提供了 <tt class="docutils literal"><span class="pre">bind</span></tt> 函数。与普通 <tt class="docutils literal"><span class="pre">Function.prototype.bind</span></tt> 不同的是，RapydScript的 <tt class="docutils literal"><span class="pre">bind</span></tt> 函数能够将已经被绑定的方法重新绑定。因此，在上面例子中，我们所期望的绑定可以通过下面的方式实现：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">bound</span> <span class="o">=</span> <span class="n">bind</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">tod</span><span class="p">,</span> <span class="s">&#39;greet&#39;</span><span class="p">),</span> <span class="n">tod</span><span class="p">)</span>
+<span class="n">bound</span><span class="p">()</span>                     <span class="c"># Hello, my name is Tod</span>
+</pre></div>
+</div>
+<p>相应地，如果你想要取消一个方法的绑定，方法很简单，即不传递方法要绑定的对象给函数的第二个参数，而是传递 <a href="#id9"><span class="problematic" id="id10">`</span></a>false <a href="#id11"><span class="problematic" id="id12">`</span></a>。</p>
+</div>
+<div class="section" id="rebind">
+<h3><a class="toc-backref" href="#id23">rebind()</a><a class="headerlink" href="#rebind" title="永久链接至标题">¶</a></h3>
+<p>你还可以通过调用 <tt class="docutils literal"><span class="pre">rebind_all</span></tt> 在类对象初始化时自动绑定所有的方法：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Boy</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">rebind_all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;My name is&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="n">tod</span> <span class="o">=</span> <span class="n">Boy</span><span class="p">(</span><span class="s">&#39;Tod&#39;</span><span class="p">)</span>
+<span class="n">tod</span><span class="o">.</span><span class="n">greet</span><span class="p">()</span>                 <span class="c"># Hello, my name is Tod</span>
+<span class="nb">getattr</span><span class="p">(</span><span class="n">tod</span><span class="p">,</span> <span class="s">&#39;greet&#39;</span><span class="p">)()</span>     <span class="c"># Hello, my name is To</span>
+</pre></div>
+</div>
+<p>同样地， <tt class="docutils literal"><span class="pre">rebind_all(self,</span> <span class="pre">false)</span></tt> 可以解绑所有的方法。</p>
+</div>
+<div class="section" id="auto-bind">
+<h3><a class="toc-backref" href="#id24">&#8211;auto-bind 标志</a><a class="headerlink" href="#auto-bind" title="永久链接至标题">¶</a></h3>
+<p>RapydScript不建议对从第三方库继承的类做自动绑定。例如 <tt class="docutils literal"><span class="pre">casperjs</span></tt> 的 <tt class="docutils literal"><span class="pre">Casper</span></tt> 类, 在RapydScript中很容易对其做下面的继承和扩展：</p>
+<div class="highlight-python"><div class="highlight"><pre>@external
+class Casper:
+    pass
+
+class Scraper(Casper):
+    def __init__(self):
+        Casper.__init__(self)
+        self.start()
+
+s = Scraper()
+s.thenOpen(&#39;http://casperjs.org&#39;,
+    def(): this.echo(this.getTitle())
+)
+s.run()
+</pre></div>
+</div>
+<p>尽管在上面的构造函数中可以调用 <tt class="docutils literal"><span class="pre">rebind_all</span></tt> ，但是会对Casper造成破坏(thenOpen方法就是需要javascript的这种闭包特性)。正因为如此，RapydScript默认不将 <tt class="docutils literal"><span class="pre">rebind_all</span></tt> 添加到构造函数里。但是，你还是可以使用 <tt class="docutils literal"><span class="pre">--auto-bind</span></tt> 编译标志使RapydScript在编译时自动地绑定方法。还有一点就是在这个标志的幕后，为保证绑定与Python中的行为相同，将牺牲一些性能以及与 <tt class="docutils literal"><span class="pre">casperjs</span></tt> 这样的库的兼容性。</p>
+</div>
 </div>
 </div>
 
@@ -179,7 +431,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="module.html" class="btn btn-neutral float-right" title="模块"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="module.html" class="btn btn-neutral float-right" title="模块和库"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="grammar.html" class="btn btn-neutral" title="基本语法"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -191,7 +443,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2014, adousen.
+        &copy; 版权所有 2015, adousen.
     </p>
   </div>
 

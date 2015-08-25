@@ -7,7 +7,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>作用域控制 &mdash; RapydScript 1.0 文档</title>
+  <title>变量的作用域 &mdash; RapydScript 1.0 文档</title>
+  <meta name="description" content="使用Python编写JavaScript代码;将Python代码转换成JavaScript">
+  <meta name="keywords" content="JavaScript, RapydScript, Python, Coffescript, Complier, Web">
   
 
   
@@ -30,7 +32,7 @@
   
     <link rel="top" title="RapydScript 1.0 文档" href="index.html"/>
         <link rel="next" title="异常处理" href="except.html"/>
-        <link rel="prev" title="模块" href="module.html"/> 
+        <link rel="prev" title="模块和库" href="module.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -85,30 +87,40 @@
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id6">循环</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id7">函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id17">其它惯用法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#js">嵌入JS代码</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="class.html">类</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript 中的类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="class.html#id3">外部类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="class.html#id4">方法绑定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript的类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id7">外部类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id8">方法与对象的绑定</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="module.html">模块</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块编写</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id4">模块导入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id5">可用的标准库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">模块和库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id6">代码库</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">作用域控制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#todo">todo</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">变量的作用域</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id3">局部和全局作用域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#globalnonlocal">global和nonlocal</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="except.html">异常处理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="except.html#todo">todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except">try/except</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id3">捕获特定异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id4">自定义的异常类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except-finally">try/except/finally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id7">抛出异常</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="advance.html">高级话题</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">简单的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">浏览器兼容性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id4">编码惯例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quriks.html">编程琐事</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quriks.html#id3">注意事项</a></li>
 </ul>
 </li>
 </ul>
@@ -137,10 +149,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>作用域控制</li>
+    <li>变量的作用域</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/scope.txt" rel="nofollow"> View page source</a>
+          <a href="https://github.com/adousen/RapydScript-Doc-zh_CN" rel="nofollow"> View source on github</a>
         
       </li>
   </ul>
@@ -149,19 +161,63 @@
           <div role="main">
             
   <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id3">作用域控制</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><a class="toc-backref" href="#id4">变量的作用域</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="contents topic" id="id2">
 <p class="topic-title first">目录</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id3">作用域控制</a><ul>
-<li><a class="reference internal" href="#todo" id="id4">todo</a></li>
+<li><a class="reference internal" href="#id1" id="id4">变量的作用域</a><ul>
+<li><a class="reference internal" href="#id3" id="id5">局部和全局作用域</a></li>
+<li><a class="reference internal" href="#globalnonlocal" id="id6">global和nonlocal</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="todo">
-<h2><a class="toc-backref" href="#id4">todo</a><a class="headerlink" href="#todo" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id5">局部和全局作用域</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>作用域与变量的上下文环境有关。例如，在函数内部定义的变量对函数外部的代码是不可见的，这个变量的作用域只在函数的局部范围。</p>
+<p>JavaScript控制作用域是通过 <tt class="docutils literal"><span class="pre">var</span></tt> 关键字。若变量未以var关键字开头进行声明，则会引用离其最近的同名变量。例如下面的JavaScript代码不仅仅返回加1后的 <tt class="docutils literal"><span class="pre">a</span></tt> ，而且还会将全局变量 <tt class="docutils literal"><span class="pre">a</span></tt> 的值变为 <tt class="docutils literal"><span class="pre">a+1</span></tt> ：</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">a_plus_1</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">++</span><span class="nx">a</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>通常来说，如果你省略 <tt class="docutils literal"><span class="pre">var</span></tt> ，JavaScript就会默认在外部或者全局作用域中查找。然而，在一些大型程序中，这种方式会引入一些复杂的bug。为了避免这个问题，RapydScript的作用域采取了完全相反的工作方式（与Python相似）。RapydScript偏向于局部作用域优先的方式，无论你用何种方式在函数中为变量赋值，总是会创建一个局部的变量（这被称为局部变量隐藏全局变量）。这会带来另一个烦恼，那就是变量的修改将被舍弃。例如下面的代码，乍看起来变量 <tt class="docutils literal"><span class="pre">a</span></tt> 的值会变成2：</p>
+<div class="highlight-python"><div class="highlight"><pre>a = 1
+b = 1
+increment = def():
+    a += b
+increment()
+</pre></div>
+</div>
+<p>但执行之后，你会发现 increment() 函数会舍弃所有对变量 <cite>a</cite> 的修改。这是因为与Python一样，RapydScript默认地并不允许你对外部作用域中声明的变量进行修改。只要你是在内部作用域中对变量 <tt class="docutils literal"><span class="pre">a</span></tt> 进行赋值，那么RapydScript就会将其定义为一个内部变量，并且隐藏外部作用域的同名变量 <tt class="docutils literal"><span class="pre">a</span></tt> 。</p>
+</div>
+<div class="section" id="globalnonlocal">
+<h2><a class="toc-backref" href="#id6">global和nonlocal</a><a class="headerlink" href="#globalnonlocal" title="永久链接至标题">¶</a></h2>
+<p>有一个解决的办法是使用 <tt class="docutils literal"><span class="pre">global</span></tt> 关键字，将 <tt class="docutils literal"><span class="pre">a</span></tt> 声明为一个全局变量。并且，在每个打算对 <tt class="docutils literal"><span class="pre">a</span></tt> 进行修改的函数中都需要这样。</p>
+<p>但是这种方式还是会造成对全局作用域的污染，因为可能会不小心就覆盖了不相干的同名变量（比如他人定义的或者来自其他库的变量）。RapydScript通过引入 <tt class="docutils literal"><span class="pre">nonlocal</span></tt> 关键字解决了这个问题（类似Python3）：</p>
+<div class="highlight-python"><div class="highlight"><pre>a = 1
+b = 1
+increment = def():
+    nonlocal a
+    a += b
+increment()
+</pre></div>
+</div>
+<p>需要注意的是，上面的代码中变量 <tt class="docutils literal"><span class="pre">b</span></tt> 并不会被隐藏。因为只有赋值操作才会触发隐藏，你可以在不使用 <tt class="docutils literal"><span class="pre">nonlocal</span></tt> 的情况下，读取到外部作用域的变量。</p>
+<p>你可以通过用逗号隔开的方式，联合声明多个非局部变量： <tt class="docutils literal"><span class="pre">nonlocal</span> <span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c</span></tt> 。此外，你还可以通过链式 <tt class="docutils literal"><span class="pre">nonlocal</span></tt> 声明，跳出到多个作用域：</p>
+<div class="highlight-python"><div class="highlight"><pre>def fun1():
+    a = 5
+    b = fun2():
+        nonlocal a
+        a *= 2
+        c = fun3():
+            nonlocal a
+            a += 1
+</pre></div>
+</div>
+<p>在大多数情况下，变量隐藏是值得采用的方式，因为它不会造成对外部逻辑的意外破坏。并且一般来讲，如果你想要对外部作用域中的变量进行修改，更好的方式是将函数的返回值赋给它。尽管如此，但是在某些情况下，使用 <tt class="docutils literal"><span class="pre">nonlocal</span></tt> 可以使代码更加清新。当然也可以使用 <tt class="docutils literal"><span class="pre">global</span></tt> ,但这并不是一个好的方案，使用 <tt class="docutils literal"><span class="pre">nonlocal</span></tt> 会更好。</p>
 </div>
 </div>
 
@@ -174,7 +230,7 @@
         <a href="except.html" class="btn btn-neutral float-right" title="异常处理"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="module.html" class="btn btn-neutral" title="模块"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="module.html" class="btn btn-neutral" title="模块和库"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -183,7 +239,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2014, adousen.
+        &copy; 版权所有 2015, adousen.
     </p>
   </div>
 

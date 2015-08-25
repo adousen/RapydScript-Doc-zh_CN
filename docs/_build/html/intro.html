@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>RapydScript的介绍 &mdash; RapydScript 1.0 文档</title>
+  <meta name="description" content="使用Python编写JavaScript代码;将Python代码转换成JavaScript">
+  <meta name="keywords" content="JavaScript, RapydScript, Python, Coffescript, Complier, Web">
   
 
   
@@ -85,30 +87,40 @@
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id6">循环</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id7">函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id17">其它惯用法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#js">嵌入JS代码</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="class.html">类</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript 中的类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="class.html#id3">外部类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="class.html#id4">方法绑定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript的类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id7">外部类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id8">方法与对象的绑定</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="module.html">模块</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块编写</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id4">模块导入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id5">可用的标准库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">模块和库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id6">代码库</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="scope.html">作用域控制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scope.html#todo">todo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">变量的作用域</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#id3">局部和全局作用域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#globalnonlocal">global和nonlocal</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="except.html">异常处理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="except.html#todo">todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except">try/except</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id3">捕获特定异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id4">自定义的异常类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except-finally">try/except/finally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id7">抛出异常</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="advance.html">高级话题</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">简单的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">浏览器兼容性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id4">编码惯例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quriks.html">编程琐事</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quriks.html#id3">注意事项</a></li>
 </ul>
 </li>
 </ul>
@@ -140,7 +152,7 @@
     <li>RapydScript的介绍</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/intro.txt" rel="nofollow"> View page source</a>
+          <a href="https://github.com/adousen/RapydScript-Doc-zh_CN" rel="nofollow"> View source on github</a>
         
       </li>
   </ul>
@@ -152,11 +164,12 @@
 <h1>RapydScript的介绍<a class="headerlink" href="#rapydscript" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id1">
 <h2>RapydScript是什么<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<p>RapydScript（读音&#8221;RapidScript&#8221;）本身是一个预编译器，它支持使用与Python相近的语法编写代码，并可以将其编译为JavaScript。类似的项目还有CoffeeScript。但在语法上，RapydScript更加简洁，更加易读。并且还允许在代码段中使用Javascript语法（嵌入式）。</p>
-<p>起初RapydScript项目的创建，目的是给那些希望能用类似Python的语法编写JavaScript的人一个替代Pyjamas方案，它不会像Pyjamas那样引入一些额外开销和复杂性。</p>
-<p>RapydScrip使你可以使用Python来编写前端代码，并且不会像其他类似框架那样引入额外的开销，它的性能与纯Javascript编写的代码是一样的。对那些熟悉CoffeeScript的人来说，RapydScript与CoffeeScript是很相似的。但是，RapydScript受到的不是Ruby灵巧性，而是Python可读性的启发。</p>
-<p>对于熟悉Pyjamas的人来说，RapydScrip引入了许多相同的Python特性和语法支持，但不会带来同样的额外开销。</p>
-<p>如果你没有使用过上面提到的两个编译器，那么也不用着急。要是你曾使用过纯Javascript艰难地编写过代码，那么你一定会喜爱上Rapydscript。Rapydscript将Python和JavaScript两者的特性做了最好地结合，并带给你大多数其他Pythonic的JavaScript替代方案所没有的特性。</p>
+<p>RapydScript（读音&#8221;RapidScript&#8221;）本身是一个预编译器，它支持使用与Python相近的语法编写代码，并可以将其编译为JavaScript。类似的项目还有CoffeeScript。但在语法上，RapydScript更加简洁、易读。并且还允许在代码段中使用Javascript语法（嵌入式）。</p>
+<p>起初RapydScript项目的创建，目的是给那些希望能用类似Python的语法编写JavaScript的人一个替代Pyjamas方案，并且不会像Pyjamas那样引入一些额外开销和复杂性。</p>
+<p>也就是说，RapydScript可以让你用Python来编写前端代码，并且不会像其他类似框架那样引入不必要的开销。所以，它的性能几乎与用纯Javascript编写的代码一样。</p>
+<p>对那些熟悉CoffeeScript的人来说，RapydScript与CoffeeScript看起来是很相似。但是，RapydScript受到的不是Ruby灵巧性，而是Python可读性的启发。</p>
+<p>对于熟悉Pyjamas的人来说，RapydScript与之相同地引入了大量的Python特性和语法支持，但却没有带来同样的额外开销。</p>
+<p>如果上面提到的两种编译器你都没有使用过，那么也不用着急。如果你曾艰难地用纯Javascript编写过代码，那你一定会爱上Rapydscript。Rapydscript将Python和JavaScript两者的特性做了最好地结合，并带给你大多数其他Pythonic的JavaScript替代方案所没有的特性。</p>
 </div>
 <div class="section" id="id2">
 <h2>它的特性<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
@@ -168,11 +181,11 @@
 <li>可选的函数参数：使用与Python相似。</li>
 <li>继承机制：比Python还要强大，并且比JavaScript更简洁。</li>
 <li>支持定义匿名函数对象：与JavaScript的匿名函数相同。</li>
-<li>在代码中直接调外部的JavaScript/DOM 对象/函数/方法。不需要使用特殊的语法，并且不用管他们是不是在同一个框架中。</li>
-<li>变量和对象具有有意义的作用域，再也不需要重复那些 ”var“ 或者 ”new“关键字了。</li>
-<li>两种方式定义方法或函数。可以使用Python的定义方式，也可以使用JavaScript的定义方式。</li>
-<li>Python或JavaScript的教程（tutorial）都可以使用，包括那些小部件。</li>
-<li>self-hosting：编译器本身就是用RapydScript编写，然后编译成JavaScript代码，最终运行在NodeJS上面的。</li>
+<li>在代码中可以直接调外部的JavaScript/DOM 对象/函数/方法。不需要使用特殊的语法，并且不用管他们是不是在同一个框架中。</li>
+<li>变量和对象的作用域范围是明确的，并且声明时不再需要重复地使用 “var” 或者 “new” 关键字。</li>
+<li>定义方法或函数的方式有两种：可以使用Python的定义方式，也可以使用JavaScript的定义方式。</li>
+<li>Python或JavaScript的教程（tutorial）都可以使用，包括那些小组件。</li>
+<li>self-hosting：编译器本身就是用RapydScript编写，然后编译成JavaScript代码，最终运行在NodeJS上面。</li>
 </ul>
 </div></blockquote>
 <p>好了，不管怎样，我们不必再浪费时间来做过多的介绍了，学习一门新的语言或框架最好的方式就深入它。</p>
@@ -202,8 +215,8 @@
 <div class="section" id="id4">
 <h2>链接<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li>RapydScript on Github：<a class="reference external" href="https://github.com/atsepkov/RapydScript">https://github.com/atsepkov/RapydScript</a></li>
-<li>RapydScript.com：<a class="reference external" href="http://rapydscript.com/">http://rapydscript.com/</a></li>
+<li><strong>RapydScript on Github</strong> ：<a class="reference external" href="https://github.com/atsepkov/RapydScript">https://github.com/atsepkov/RapydScript</a></li>
+<li><strong>RapydScript.com</strong> ：<a class="reference external" href="http://rapydscript.com/">http://rapydscript.com/</a></li>
 </ul>
 </div>
 </div>
@@ -226,7 +239,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2014, adousen.
+        &copy; 版权所有 2015, adousen.
     </p>
   </div>
 

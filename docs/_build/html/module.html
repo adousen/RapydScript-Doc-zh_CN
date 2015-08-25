@@ -7,7 +7,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>模块 &mdash; RapydScript 1.0 文档</title>
+  <title>模块和库 &mdash; RapydScript 1.0 文档</title>
+  <meta name="description" content="使用Python编写JavaScript代码;将Python代码转换成JavaScript">
+  <meta name="keywords" content="JavaScript, RapydScript, Python, Coffescript, Complier, Web">
   
 
   
@@ -29,7 +31,7 @@
 
   
     <link rel="top" title="RapydScript 1.0 文档" href="index.html"/>
-        <link rel="next" title="作用域控制" href="scope.html"/>
+        <link rel="next" title="变量的作用域" href="scope.html"/>
         <link rel="prev" title="类" href="class.html"/> 
 
   
@@ -85,30 +87,40 @@
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id6">循环</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id7">函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id17">其它惯用法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#js">嵌入JS代码</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="class.html">类</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript 中的类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="class.html#id3">外部类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="class.html#id4">方法绑定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript的类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id7">外部类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id8">方法与对象的绑定</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">模块</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id3">模块编写</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">模块导入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">可用的标准库</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">模块和库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id3">模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">代码库</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="scope.html">作用域控制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scope.html#todo">todo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">变量的作用域</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#id3">局部和全局作用域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#globalnonlocal">global和nonlocal</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="except.html">异常处理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="except.html#todo">todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except">try/except</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id3">捕获特定异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id4">自定义的异常类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except-finally">try/except/finally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id7">抛出异常</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="advance.html">高级话题</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">简单的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">浏览器兼容性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id4">编码惯例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quriks.html">编程琐事</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quriks.html#id3">注意事项</a></li>
 </ul>
 </li>
 </ul>
@@ -137,10 +149,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>模块</li>
+    <li>模块和库</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/module.txt" rel="nofollow"> View page source</a>
+          <a href="https://github.com/adousen/RapydScript-Doc-zh_CN" rel="nofollow"> View source on github</a>
         
       </li>
   </ul>
@@ -149,27 +161,82 @@
           <div role="main">
             
   <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id6">模块</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><a class="toc-backref" href="#id8">模块和库</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="contents topic" id="id2">
 <p class="topic-title first">目录</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id6">模块</a><ul>
-<li><a class="reference internal" href="#id3" id="id7">模块编写</a></li>
-<li><a class="reference internal" href="#id4" id="id8">模块导入</a></li>
-<li><a class="reference internal" href="#id5" id="id9">可用的标准库</a></li>
+<li><a class="reference internal" href="#id1" id="id8">模块和库</a><ul>
+<li><a class="reference internal" href="#id3" id="id9">模块</a><ul>
+<li><a class="reference internal" href="#id4" id="id10">模块的导入</a></li>
+<li><a class="reference internal" href="#id5" id="id11">模块的编写</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6" id="id12">代码库</a><ul>
+<li><a class="reference internal" href="#javascript" id="id13">使用外部JavaScript库</a></li>
+<li><a class="reference internal" href="#id7" id="id14">可用的标准库</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 <hr class="docutils" />
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id7">模块编写</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-</div>
+<h2><a class="toc-backref" href="#id9">模块</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id4">
-<h2><a class="toc-backref" href="#id8">模块导入</a><a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h3><a class="toc-backref" href="#id10">模块的导入</a><a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>RapydScript的模块系统的工作方式与Python几乎相同。模块文件以 <tt class="docutils literal"><span class="pre">.pyj</span></tt> 为后缀，而包是包含 <tt class="docutils literal"><span class="pre">__init__.pyj</span></tt> 文件的目录。</p>
+<p>唯一需要注意的就是，<tt class="docutils literal"><span class="pre">*</span></tt> 符号的导入方式目前还不被支持（这是设计上的考虑，<tt class="docutils literal"><span class="pre">*</span></tt> 号导入很容易被滥用）。</p>
+<p>另外，目前使用 <tt class="docutils literal"><span class="pre">as</span></tt> 的定义别名目前也不被支持，但这已在我的TODO列表上了。</p>
 </div>
 <div class="section" id="id5">
-<h2><a class="toc-backref" href="#id9">可用的标准库</a><a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<h3><a class="toc-backref" href="#id11">模块的编写</a><a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>与Python相同，RapydScript允许将其他模块的代码导入当前代码中。</p>
+<p>对于还不熟悉模块导入的人来说，我们可以设想正在编写的一个上千行代码的大项目。我们当然可以把所有代码都放在一个文件中，但是这样可能就会不清晰（特别是在多个开发者参与的项目中）。不同的是，我们可以通过划分，将代码放进不同的文件里。</p>
+<p>例如，我们假设编写的是一个视频游戏项目，并且我们编写了一个继承&#8217;BasicCharacter&#8217;类的模块，这个模块在NPC、monster以及主角等角色的代码中都有使用。并且，我们将这个类的代码保存在Basic.pyj模块文件中（这是RapydScript最喜欢的扩展方式）。现在，我们在另一个模块中创建主角类：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">Basic</span> <span class="kn">import</span> <span class="n">BasicCharacter</span>
+
+<span class="k">class</span> <span class="nc">MainCharacter</span><span class="p">(</span><span class="n">BasicCharacter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is the main character class, similar to basic but it implements attack and hp</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">BasicCharacter</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hp</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">damage</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">something</span><span class="p">):</span>
+        <span class="n">something</span><span class="o">.</span><span class="n">getHurt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">damage</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">getHurt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">damage</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hp</span> <span class="o">-=</span> <span class="n">damage</span>
+</pre></div>
+</div>
+<p>使用RapydScript的导入方式，你不必担心需要将多个独立的JavaScript文件包含进html文件中， 因为所有.pyj文件中的代码都会被融入到一个单独.js文件，只需要将它其包含进页面代码即可。这个.js文件将与输入RapydScript编译器的.pyj文件同名。</p>
+<p>RapydScript默认已经加入了多个可被导入的模块，比如 <tt class="docutils literal"><span class="pre">stdlib</span></tt> 、 <tt class="docutils literal"><span class="pre">yql</span></tt> 。你可以通过查看模块代码中的内嵌示例文档，了解它们如何使用。</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id12">代码库</a><a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="section" id="javascript">
+<h3><a class="toc-backref" href="#id13">使用外部JavaScript库</a><a class="headerlink" href="#javascript" title="永久链接至标题">¶</a></h3>
+<p>我们知道Python主要的强大之处在于它为开发者提供了大量可用的库，但这只被少数 <tt class="docutils literal"><span class="pre">Python-in-a-browser</span></tt> 所理解。在浏览器中都是以JavaScript为王，并且无论社区为特定的项目编写了多少的库文件，现成可用的JavaScript库的数量总是会超过它们。正因如此，从一开始RapydScript的设计就保持与JavaScript和DOM的集成。事实上，用 <tt class="docutils literal"><span class="pre">underscore.js</span></tt> 替代RapydScript的 <tt class="docutils literal"><span class="pre">stdlib</span></tt> 同样可以工作良好。一些开发者可以尝试这样做，总之 <tt class="docutils literal"><span class="pre">underscore.js</span></tt> 也是非常Pythonic和完整的库。同样， <tt class="docutils literal"><span class="pre">sprintf.js</span></tt> (<a class="reference external" href="https://npmjs.org/package/sprintf-js">https://npmjs.org/package/sprintf-js</a>) 也能够用在RapydScript中实现Python的字符串插值。</p>
+<p>正因如此，我们总是保持RapydScript的附件尽可能小。RapydScript最强大之处是很容易与JavaScript和DOM集成，这使得我可以保持理智，并且不再重编写那些已存在的库。</p>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id14">可用的标准库</a><a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>但是，这并不意味着RapydScript不能编写python式的库。为了证明这一点，我克隆并实现了一些轻量级的流行的Python库，并将其捆绑到RapydScript中，你可以在源代码的 <tt class="docutils literal"><span class="pre">src</span></tt> 目录找到它们，主要包含下面的这些库：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">stdlib</span><span class="o">/</span><span class="n">stdlib2</span>      <span class="c"># see stdlib section</span>
+<span class="n">math</span>                <span class="c"># 基本实现了Python的 math 库的所有功能</span>
+<span class="n">re</span>                  <span class="c"># 基本实现了Python的 re 库的所有功能</span>
+<span class="n">unittest</span>            <span class="c"># 基本实现了Python的 unittest 库的所有功能</span>
+<span class="n">random</span>              <span class="c"># 实现了Python的 unittest 库的大多数功能</span>
+<span class="n">yql</span>                 <span class="c"># 能够运行Yahoo Query Language请求的轻量级的库</span>
+</pre></div>
+</div>
+<p>在大多数情况下,这些库函数的实现逻辑与各个版本的Python完全相同。需要格外提醒的一点是， <tt class="docutils literal"><span class="pre">unitest</span></tt> 库中的类需要与 <tt class="docutils literal"><span class="pre">global``（nodejs）</span> <span class="pre">或</span> <span class="pre">``window``（浏览器）</span> <span class="pre">对象绑定，以使其能被</span> <span class="pre">``unittest.main()</span></tt> 取得。 <tt class="docutils literal"><span class="pre">unitetest.pyj</span></tt> 文件中有这方面的用例。如果社区中的其他成员想要实现更好的库，我是很高兴将他们包含进来的（这也是很有意思的， <tt class="docutils literal"><span class="pre">re.pyj</span></tt> 就是一个好例子）。</p>
+<p>但还是要强调，与其他大多数Python至JavaScript编译器不同，RapydScript并不完全需要完整的库，因为本来就已经有大量原生JavaScript库可以使用。</p>
+</div>
 </div>
 </div>
 
@@ -179,7 +246,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="scope.html" class="btn btn-neutral float-right" title="作用域控制"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="scope.html" class="btn btn-neutral float-right" title="变量的作用域"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="class.html" class="btn btn-neutral" title="类"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -191,7 +258,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2014, adousen.
+        &copy; 版权所有 2015, adousen.
     </p>
   </div>
 

@@ -1,0 +1,41 @@
+import stdlib
+foo = 1
+
+# print(str(1))
+
+### test hash/dict
+hash = {'dogs': 1, 'cats': 2}
+print(hash)         # {"dogs":1,"cats":2}
+console.log(hash)   # Object
+
+### test dict key-value and object's attributes
+obj = {
+    foo:    1,
+    bar:    def(): print('bar' + str(foo))
+}
+hash = {
+    'foo':  1,
+    'bar':  def(): print('bar' + str(foo))
+}
+
+obj.bar()       # good
+obj['bar']()    # bad
+
+hash.bar()      # bad
+hash['bar']()   # good
+
+### test Negative indexe
+index_test = 'abcdefg'
+
+print(index_test[-2]) # output 'f'
+
+num = 3 
+print(index_test[-num]) # output 'null'
+
+### test wrapped jQuery object
+$canvas = $('<canvas></canvas>')
+canvas = $canvas.get(0)
+# print(canvas)
+
+
+

@@ -7,7 +7,15 @@
 RapydScript文档
 ================================
 
-文档目录:
+ **RapydScript** （读音"RapidScript"）本身是一个预编译器，它支持使用与Python相近的语法编写代码，并可以将其编译成可以在浏览器运行的JavaScript代码。类似的项目还有CoffeeScript。但在语法上，RapydScript更加简洁、易读。并且还允许在代码段中使用Javascript语法（嵌入式）。
+
+相关链接
+------------------
+- **RapydScript on Github** ：https://github.com/atsepkov/RapydScript
+- **RapydScript.com** ：http://rapydscript.com/
+
+目录:
+------------------
 
 .. toctree::
    :maxdepth: 3
@@ -21,6 +29,7 @@ RapydScript文档
    scope
    except
    advance
+   quriks
 
 
 索引

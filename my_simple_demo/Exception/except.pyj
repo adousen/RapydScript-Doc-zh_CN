@@ -1,0 +1,31 @@
+bar = {}
+bar.foo = bar
+
+try:
+    print(foo)
+except ReferenceError as err:
+    print(err.name + ':' + err.message)
+    
+try:
+    print(bar)
+except TypeError:
+    print("One of foo's attributes references foo")
+
+#customer error 
+class MyError(Error):
+    def __init__(self, message):
+        self.name = 'Error'
+        self.message = message
+
+try:
+    raise MyError('This is a custom error!')
+except MyError as err:
+    print(err.name + ':' + err.message)
+    
+
+#multiple error
+try:
+    print(foo)
+except ReferenceError, TypeError as e:
+    print(e.name + ':' + e.message)
+    

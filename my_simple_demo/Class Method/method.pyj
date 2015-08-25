@@ -1,0 +1,57 @@
+
+class makeDiv:
+    def __init__(s):
+        s.method = def():
+            return s.makeDivThatTurnsGreen()
+
+    def makeDivThatTurnsGreen(s):
+        div = $('<div></div>').text('Press on it to see the change of color')
+
+        turnGreen = def(event):
+            div.css('background', 'green')
+
+        div.mousedown(turnGreen)
+
+        resetColor = def(event):
+            div.css('background', '')
+
+        div.mouseup(resetColor)
+
+        return div
+        
+$(document).ready( 
+        def(): 
+            $("#display").append(makeDiv().method());
+    ); 
+
+# method bind    
+class Boy:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        print('My name is' + self.name)
+        
+tod = Boy('Tod')
+tod.greet()                 # Hello, my name is Tod
+
+print(getattr(tod, 'name'))  # Tod   
+
+# getattr(tod, 'greet')()     # Hello, my name is undefined   
+
+bound = bind(getattr(tod, 'greet'), tod)
+bound()                     # Hello, my name is Tod
+
+# method rebind at initialization
+
+class Boy2:
+    def __init__(self, name):
+        self.name = name
+        rebind_all(self)
+
+    def greet(self):
+        print('My name is' + self.name)
+
+tod2 = Boy2('Tod2')
+tod2.greet()                 # Hello, my name is Tod2
+getattr(tod2, 'greet')()     # Hello, my name is undefined 

@@ -1,0 +1,16 @@
+class ColorfulTextField:
+    def __init__(self):
+        field = $('<input></input>')
+        changeColor = def(event):
+            console.log(field.val());
+            field.css('background', field.val())
+        field.blur(changeColor)
+        
+        self.widget = field
+
+$(document).ready( 
+        def(): 
+            textfield = ColorfulTextField()
+            # myImage = Image()
+            $('#display').append(textfield.widget)
+    ); 

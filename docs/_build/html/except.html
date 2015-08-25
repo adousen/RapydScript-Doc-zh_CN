@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>异常处理 &mdash; RapydScript 1.0 文档</title>
+  <meta name="description" content="使用Python编写JavaScript代码;将Python代码转换成JavaScript">
+  <meta name="keywords" content="JavaScript, RapydScript, Python, Coffescript, Complier, Web">
   
 
   
@@ -30,7 +32,7 @@
   
     <link rel="top" title="RapydScript 1.0 文档" href="index.html"/>
         <link rel="next" title="高级话题" href="advance.html"/>
-        <link rel="prev" title="作用域控制" href="scope.html"/> 
+        <link rel="prev" title="变量的作用域" href="scope.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -85,30 +87,40 @@
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id6">循环</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id7">函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grammar.html#id17">其它惯用法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#js">嵌入JS代码</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="class.html">类</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript 中的类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="class.html#id3">外部类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="class.html#id4">方法绑定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript的类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id7">外部类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id8">方法与对象的绑定</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="module.html">模块</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块编写</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id4">模块导入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module.html#id5">可用的标准库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">模块和库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id6">代码库</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="scope.html">作用域控制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scope.html#todo">todo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">变量的作用域</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#id3">局部和全局作用域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#globalnonlocal">global和nonlocal</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">异常处理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#todo">todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#try-except">try/except</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">捕获特定异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">自定义的异常类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#try-except-finally">try/except/finally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">抛出异常</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="advance.html">高级话题</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">简单的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">浏览器兼容性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id4">编码惯例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quriks.html">编程琐事</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quriks.html#id3">注意事项</a></li>
 </ul>
 </li>
 </ul>
@@ -140,7 +152,7 @@
     <li>异常处理</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/except.txt" rel="nofollow"> View page source</a>
+          <a href="https://github.com/adousen/RapydScript-Doc-zh_CN" rel="nofollow"> View source on github</a>
         
       </li>
   </ul>
@@ -149,19 +161,102 @@
           <div role="main">
             
   <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id3">异常处理</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><a class="toc-backref" href="#id10">异常处理</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="contents topic" id="id2">
 <p class="topic-title first">目录</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id3">异常处理</a><ul>
-<li><a class="reference internal" href="#todo" id="id4">todo</a></li>
+<li><a class="reference internal" href="#id1" id="id10">异常处理</a><ul>
+<li><a class="reference internal" href="#try-except" id="id11">try/except</a></li>
+<li><a class="reference internal" href="#id3" id="id12">捕获特定异常</a></li>
+<li><a class="reference internal" href="#id4" id="id13">自定义的异常类</a></li>
+<li><a class="reference internal" href="#try-except-finally" id="id14">try/except/finally</a></li>
+<li><a class="reference internal" href="#id7" id="id15">抛出异常</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="todo">
-<h2><a class="toc-backref" href="#id4">todo</a><a class="headerlink" href="#todo" title="永久链接至标题">¶</a></h2>
+<div class="section" id="try-except">
+<h2><a class="toc-backref" href="#id11">try/except</a><a class="headerlink" href="#try-except" title="永久链接至标题">¶</a></h2>
+<p>与Python相同，RapydScript有异常处理的逻辑。例如，在下面的代码中会输出变量 <cite>foo</cite> 未定义的警告：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Foo wasn&#39;t declared yet&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id12">捕获特定异常</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>上面实例很好，但是却只适用于捕获的异常恰好是我们期望的。思考下面的例子，如果 <cite>foo</cite> 被定义为一个循环引用的结构（在其属性中自引用）：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">foo</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">foo</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="n">foo</span>
+</pre></div>
+</div>
+<p>这同样会触发一个异常，但是异常原因却于完全不同。实际上，<cite>try/except</cite> 代码块更好的编写方式是：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ReferenceError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Foo wasn&#39;t declared yet&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如果需要，我们同样可以处理循环引用异常：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ReferenceError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Foo wasn&#39;t declared yet&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;One of foo&#39;s attributes references foo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>另外，我们还可以将异常中的信息输出给用户：</p>
+<dl class="docutils">
+<dt>try:</dt>
+<dd>print(foo)</dd>
+<dt>except as err:</dt>
+<dd>print(err.name + &#8216;:&#8217; + err.message)，</dd>
+</dl>
+<p>在这个例子中， <cite>err</cite> 是一个JavaScript的Error对象，具有 <cite>name</cite> 和 <cite>message</cite> 属性，更多的信息可以查看 <a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error">https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error</a> 。</p>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id13">自定义的异常类</a><a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>与在Python中相同，你还可以从Error类继承，创建一个自定义的异常类：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyError</span><span class="p">(</span><span class="n">Error</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;Error&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span>
+
+<span class="k">raise</span> <span class="n">MyError</span><span class="p">(</span><span class="s">&#39;This is a custom error!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你还可以把多种异常的处理放在一个except语句块中：</p>
+<div class="highlight-python"><div class="highlight"><pre>try:
+    print(foo)
+except ReferenceError, TypeError as e:
+    print(e.name + &#39;:&#39; + e.message)
+</pre></div>
+</div>
+</div>
+<div class="section" id="try-except-finally">
+<h2><a class="toc-backref" href="#id14">try/except/finally</a><a class="headerlink" href="#try-except-finally" title="永久链接至标题">¶</a></h2>
+<p>RapydScript中的 <cite>try/except/finally</cite> 与在Python 3中基本相似，唯一不同是没有 <a href="#id5"><span class="problematic" id="id6">`</span></a>else`（实现它没有似乎太大用处）。</p>
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id15">抛出异常</a><a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>与在Python和JavaScript中一样，异常可以相互嵌套，并且可以使用 <a href="#id8"><span class="problematic" id="id9">`</span></a>raise ` 语句再次向用户抛出将异常：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ReferenceError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span> <span class="o">==</span> <span class="s">&#39;foo is not defined&#39;</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;undefined&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">e</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="c"># reset foo</span>
+    <span class="n">foo</span> <span class="o">=</span> <span class="s">&#39;bar&#39;</span>
+</pre></div>
+</div>
+<p>与Python相似（但这与常规的JavaScript不同），你可以仅使用 <cite>raise</cite> 关键字就可以在 <cite>except</cite> 语句块抛出最后一次捕获的异常。</p>
 </div>
 </div>
 
@@ -174,7 +269,7 @@
         <a href="advance.html" class="btn btn-neutral float-right" title="高级话题"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="scope.html" class="btn btn-neutral" title="作用域控制"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="scope.html" class="btn btn-neutral" title="变量的作用域"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -183,7 +278,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2014, adousen.
+        &copy; 版权所有 2015, adousen.
     </p>
   </div>
 

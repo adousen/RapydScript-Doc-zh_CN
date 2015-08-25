@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>编程琐事 &mdash; RapydScript 1.0 文档</title>
+  <meta name="description" content="使用Python编写JavaScript代码;将Python代码转换成JavaScript">
+  <meta name="keywords" content="JavaScript, RapydScript, Python, Coffescript, Complier, Web">
+  
+
+  
+  
+
+  
+  <link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="RapydScript 1.0 文档" href="index.html"/>
+        <link rel="prev" title="高级话题" href="advance.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-logo">
+        <a href="#"><img class="logo" src="_static/rs_logo_tiny_med.png"></a>
+        <a class="title" href="index.html"> RapydScript</a>
+      </div>
+      <div class="wy-side-nav-search">
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="搜索..." />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">RapydScript的介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id1">RapydScript是什么</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id2">它的特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id3">社区</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id4">链接</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">安装与使用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id2">安装编译器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id3">编译代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">开始编程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="start.html#id3">简单的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#id4">在页面中调用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#api">使用外部的API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="grammar.html">基本语法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#tuple">元组 (tuple)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#list">列表 (List)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#id6">循环</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#id7">函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#id17">其它惯用法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html#js">嵌入JS代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class.html">类</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class.html#rapydscript">RapydScript的类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id7">外部类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class.html#id8">方法与对象的绑定</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">模块和库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id3">模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module.html#id6">代码库</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">变量的作用域</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#id3">局部和全局作用域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scope.html#globalnonlocal">global和nonlocal</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="except.html">异常处理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except">try/except</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id3">捕获特定异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id4">自定义的异常类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#try-except-finally">try/except/finally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="except.html#id7">抛出异常</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advance.html">高级话题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id3">浏览器兼容性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advance.html#id4">编码惯例</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">编程琐事</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id3">注意事项</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+      <div class="wy-side-author">
+        rapydscript.cn
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">RapydScript</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>编程琐事</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="https://github.com/adousen/RapydScript-Doc-zh_CN" rel="nofollow"> View source on github</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="id1">
+<h1><a class="toc-backref" href="#id4">编程琐事</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title first">目录</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id4">编程琐事</a><ul>
+<li><a class="reference internal" href="#id3" id="id5">注意事项</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id5">注意事项</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>在完美世界中，程序的运行没有缺陷，并且没有要绕着用户转的的情况。在不是怎么完美的世界，程序的怪异之处都是由其本身造成，并且都还可以被修复。但在我们的真实世界，不仅要处理程序本身的一些奇怪，还要面对与之关联的程序出现的问题。RapydScript自然不能独善其身，它不仅本身有许多不足之处，而且还有一些由浏览器产生的问题，以及jQuery等外部库产生的bug。下面列出了一些我们需要注意的事情：</p>
+<blockquote>
+<div><ul class="simple">
+<li>RapydScript会自动给由其生成得类添加 <tt class="docutils literal"><span class="pre">new</span></tt> 关键字。而例如 <tt class="docutils literal"><span class="pre">Image</span></tt> 和 <tt class="docutils literal"><span class="pre">RegExp</span></tt> 等原生的JavaScript对象，以及来自外部库的类，均需要标明为external。这意味着从对外部引入的、不能被编译器识别的类需要使用 <tt class="docutils literal"><span class="pre">&#64;external</span></tt> 装饰器。不然，你就需要手动添加 <tt class="docutils literal"><span class="pre">new</span></tt> 关键字。</li>
+<li>自动附加new关键字取决于编译器是否能够识别出类。由于JavaScript属于动态语言，因此RapydScript不能够100%准确做到这一点（这通常是由于JavaScript代码采用的是鸭子类型，即将类的构造函数隐藏于变量中），这些时候你得自己添加 <tt class="docutils literal"><span class="pre">new</span></tt> 关键字。类似的，RapydScript编译器会尝试将SomeClass.method()转换成SomeClass.prototype.method()，但是有些时候却会失败。不过，对外部类使用 <tt class="docutils literal"><span class="pre">&#64;external</span></tt> 装饰器作声明可以解决这个问题。</li>
+<li>JavaScript的相等操作符的适用范围比较有限，只有使用在原生数据类型（String,number,boolean）上时比较正常。而使用在对象上时，则与Python的 <strong>is</strong> 操作符更加接近，即比较的是对象的内存地址而不是值。因此，在RapydScript中不要对数组或者对象使用 <tt class="docutils literal"><span class="pre">==</span></tt> ，建议使用内建的 <tt class="docutils literal"><span class="pre">deep_eq</span></tt> 函数。</li>
+<li>在JavaScript中为 <strong>True</strong> 的，在Python中可能就完全不是这么回事。空列表或字典在python中会被看作 <tt class="docutils literal"><span class="pre">False</span></tt>，但在JavaScript中却会被看作 <tt class="docutils literal"><span class="pre">True</span></tt> 。尽管RapydScript编译器可以如此设计，但会付出很大的性能代价。因此，在遇到这种情况时，你最好还是选择检查它们的长度而不是直对对象做判断。</li>
+<li>在RS中，方法与对象的绑定不是自动的。所以，<tt class="docutils literal"><span class="pre">someobj.somemethod()</span></tt> 的运行结果是正确的，但是 <tt class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">someobj.somethod;</span> <span class="pre">x()</span></tt> 就不是了。不过，RS还是可以做到，但是性能代价会很大。可以查看前面章节中关于方法绑定部分进行了解。此外，你还可以在编译中使用 <tt class="docutils literal"><span class="pre">--auto-bind</span></tt> 标志，使得方法可以自动绑定到对象，但请记得千万别抱怨性能受到影响。</li>
+<li>由于jQuery错误地认为其他代码不会对JavaScript中 <tt class="docutils literal"><span class="pre">Object</span></tt> 做任何的修改，因而在其代码多个本应该做检查的地方却并没有使用 <tt class="docutils literal"><span class="pre">object.hasOwnProperty()</span></tt> 。为了与共同工作时不出错误，在编写stdlib库代码时，我特意将字典的方法放在了别的对象之下(dict)。正常的Python程序是允许你使用 <tt class="docutils literal"><span class="pre">hash.keys()</span></tt> 或者 <tt class="docutils literal"><span class="pre">dict.keys(hash)</span></tt> 两种方式。但是，RapydScript选择了只支持第二种语法，这是不得已而为之。</li>
+<li>负号索引只支持常数。一般来讲，如果编译器发现你使用的是负号索引（比如 <tt class="docutils literal"><span class="pre">array[-n]</span></tt> ），那么它会将其转换成 <tt class="docutils literal"><span class="pre">array[array.length-n]</span></tt> 。但如果负号后面是一个索引值的变量，那么你需要手动将其进行正确的索引值转换。</li>
+<li>操作符重载目前还不被支持</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="advance.html" class="btn btn-neutral" title="高级话题"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2015, adousen.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
